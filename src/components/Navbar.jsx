@@ -90,15 +90,17 @@ const Navbar = () => {
           top: 0;
           left: 0;
           right: 0;
+          padding: 2%;
           background: transparent;
           z-index: 1000;
           transition: all 0.3s ease;
         }
 
         .navbar.scrolled {
-          background: rgba(248, 245, 241, 0.95);
+          background: rgba(255, 254, 244, 0.95);
           backdrop-filter: blur(10px);
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+          padding : 0;
         }
 
         .nav-content {
@@ -117,7 +119,7 @@ const Navbar = () => {
         }
 
         .x-orange {
-          color: #f97316;
+          color: #f3793c;
           font-weight: 700;
         }
 
@@ -136,7 +138,7 @@ const Navbar = () => {
         }
 
         .nav-link:hover {
-          color: #f97316;
+          color: #f3793c;
         }
 
         .mobile-menu-toggle {
@@ -189,7 +191,7 @@ const Navbar = () => {
         }
 
         .mobile-nav-link:hover {
-          color: #f97316;
+          color: #f3793c;
         }
 
         @media (max-width: 768px) {

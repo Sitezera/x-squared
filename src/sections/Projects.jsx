@@ -129,7 +129,7 @@ const Projects = () => {
 
       <style jsx>{`
         .projects {
-           background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+           background: #F3793C;
           padding: 6rem 0;
           position: relative;
           overflow: hidden;
@@ -165,7 +165,7 @@ const Projects = () => {
         }
 
         .section-label {
-          color: #FFFFFF;
+          color: #FFFFF3;
           font-size: 0.875rem;
           font-weight: 500;
           letter-spacing: 2px;
@@ -176,7 +176,7 @@ const Projects = () => {
         .header-line {
           flex: 0 0 80px;
           height: 1px;
-          background: rgba(255, 255, 255, 0.4);
+          background: #FFFFF3;
         }
 
         .projects-content {
@@ -212,7 +212,7 @@ const Projects = () => {
           font-size: 4.5rem;
           font-weight: 300;
           font-style: italic;
-          color: #FFFFFF;
+          color: #FFFFF3;
           margin: 0 0 2rem 0;
           line-height: 0.9;
           letter-spacing: -2px;

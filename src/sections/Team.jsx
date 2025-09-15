@@ -56,7 +56,7 @@ const Team = () => {
               viewport={{ once: true }}
             >
               <div className="member-image naveen-image">
-                <div className="placeholder-image naveen-bg"></div>
+                <div className="placeholder-image naveen-bg"><img src = "/assests/naveen reddy.png" /> </div>
               </div>
               <div className="member-info naveen-info">
                 <h3 className="member-name">Naveen Reddy</h3>
