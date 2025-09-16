@@ -8,12 +8,12 @@ const Team = () => {
     {
       name: "Naveen Reddy",
       title: "Co-Founder and New Acquisitions",
-      image: "/api/placeholder/300/400"
+      image: "/assets/naveen reddy.png"
     },
     {
-      name: "Varan Mukherjee", 
+      name: "Varun Mukherjee",
       title: "Founder and Strategic Investments",
-      image: "/api/placeholder/300/400"
+      image: "/assets/varun mukherjee.png"
     }
   ]
 
@@ -35,7 +35,10 @@ const Team = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">OUR TEAM</h2>
+           <div className="teams-header">
+            <h2 className="teams-label">OUR TEAM</h2>
+            <div className="teams-line"></div>
+          </div>
           <p className="team-description">
             Our team consists of industry leaders, skilled architects, marketing experts, and legal specialists - offering combined expertise with passion to bring your projects to life.
           </p>
@@ -56,7 +59,7 @@ const Team = () => {
               viewport={{ once: true }}
             >
               <div className="member-image naveen-image">
-                <div className="placeholder-image naveen-bg"><img src = "/assests/naveen reddy.png" /> </div>
+                <img src="/assets/naveen reddy.png" alt="Naveen Reddy" className="team-photo" />
               </div>
               <div className="member-info naveen-info">
                 <h3 className="member-name">Naveen Reddy</h3>
@@ -64,20 +67,20 @@ const Team = () => {
               </div>
             </motion.div>
 
-            {/* Varan Mukherjee - Bottom Right Image */}
+            {/* Varun Mukherjee - Bottom Right Image */}
             <motion.div
-              className="member-container varan-container"
+              className="member-container varun-container"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <div className="member-info varan-info">
-                <h3 className="member-name">Varan Mukherjee</h3>
+              <div className="member-info varun-info">
+                <h3 className="member-name">Varun Mukherjee</h3>
                 <p className="member-title">Founder and Strategic Investments</p>
               </div>
-              <div className="member-image varan-image">
-                <div className="placeholder-image varan-bg"></div>
+              <div className="member-image varun-image">
+                <img src="/assets/varun mukherjee.png" alt="Varun Mukherjee" className="team-photo" />
               </div>
             </motion.div>
           </div>
@@ -96,7 +99,26 @@ const Team = () => {
         }
 
         .team-header {
-          margin-bottom: 4rem;
+          margin-bottom: 3rem;
+        }
+        .teams-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2rem;
+          gap: 1.5rem;
+        }
+        .teams-label {
+          color: #F3793C;
+          font-size: 1.2rem;
+          font-weight: 600;
+          letter-spacing: 2px;
+          margin: 0;
+          white-space: nowrap;
+        }
+        .teams-line {
+          flex: 0 0 80px;
+          height: 1px;
+          background: #F3793C;
         }
 
         .section-title {
@@ -126,7 +148,6 @@ const Team = () => {
           font-size: 1rem;
           line-height: 1.6;
           color: #4E2520;
-          max-width: 800px;
           margin: 0;
         }
 
@@ -189,7 +210,7 @@ const Team = () => {
           left: 0;
         }
 
-        .varan-container {
+        .varun-container {
           bottom: 0;
           right: 0;
         }
@@ -206,29 +227,15 @@ const Team = () => {
           position: relative;
         }
 
-        .varan-image {
+        .varun-image {
           position: relative;
         }
 
-        .placeholder-image {
+        .team-photo {
           width: 100%;
           height: 100%;
-          background-size: cover;
-          background-position: center;
-        }
-
-        .naveen-bg {
-          background: linear-gradient(135deg, #e5e5e5 0%, #d4d4d4 100%);
-          background-image: 
-            radial-gradient(circle at 30% 20%, rgba(200, 200, 200, 0.5) 0%, transparent 50%),
-            radial-gradient(circle at 70% 80%, rgba(180, 180, 180, 0.3) 0%, transparent 40%);
-        }
-
-        .varan-bg {
-          background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-          background-image: 
-            radial-gradient(circle at 60% 30%, rgba(190, 190, 190, 0.4) 0%, transparent 50%),
-            radial-gradient(circle at 20% 70%, rgba(170, 170, 170, 0.3) 0%, transparent 40%);
+          object-fit: cover;
+          object-position: center;
         }
 
         .member-info {
@@ -242,7 +249,7 @@ const Team = () => {
           text-align: left;
         }
 
-        .varan-info {
+        .varun-info {
           top: 50%;
           right: 320px;
           transform: translateY(-50%);
@@ -323,7 +330,7 @@ const Team = () => {
             width: 300px;
           }
 
-          .varan-info {
+          .varun-info {
             right: 0;
             top: 320px;
             text-align: center;
@@ -356,7 +363,7 @@ const Team = () => {
             top: 230px;
           }
 
-          .varan-info {
+          .varun-info {
             width: 250px;
             top: 280px;
           }

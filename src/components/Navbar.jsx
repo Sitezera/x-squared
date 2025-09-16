@@ -100,7 +100,7 @@ const Navbar = () => {
           background: rgba(255, 254, 244, 0.95);
           backdrop-filter: blur(10px);
           box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-          padding : 0;
+          padding : 1% 1%;
         }
 
         .nav-content {
