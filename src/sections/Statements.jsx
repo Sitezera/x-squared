@@ -55,7 +55,7 @@ const Statements = () => {
           >
             <div className="landscape-image">
               <img 
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop" 
+                src="/assets/statments.png" 
                 alt="Mountain landscape with mist"
                 className="landscape-img"
               />

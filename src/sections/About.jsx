@@ -3,214 +3,272 @@ import { motion } from 'framer-motion'
 
 const About = () => {
   return (
-    <section className="about" id="about">
+    <section className="about" id="about" aria-label="About XSquared">
       <div className="container">
+        
         <div className="about-content">
+          {/* Heading */}
           <motion.div
             className="about-header"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="section-title">ABOUT US</h2>
+          <div className="abouts-header">
+            <h2 className="abouts-label">ABOUT US</h2>
+            <div className="header-line"></div>
+          </div>
           </motion.div>
 
+          {/* Body */}
           <motion.div
             className="about-text"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 36 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <p className="about-paragraph">
-              As <em>industry pioneers with a sharp focus on land banking</em>, 
-              <span className="inline-image-container">
-                <span className="inline-image image-1"></span>
-              </span>
-              <em>we specialize in</em> 
-              <span className="inline-image-container">
-                <span className="inline-image image-2"></span>
-              </span>
-              <em>identifying untapped opportunities</em>
-            </p>
-            
-            <p className="about-paragraph">
-              <em>& transforming them into thriving, high-value assets. Our expertise spans across a wide spectrum of real estate</em> 
-              <span className="inline-image-container">
-                <span className="inline-image image-3"></span>
-              </span>
-              <em>services, from property</em>
-            </p>
-            
-            <p className="about-paragraph">
-              <em>valuation to development, making us the go-to partner for individuals and businesses looking to invest in a smarter tomorrow. At XSquared, we're not just about transactionswe're about creating value,</em> 
-              <span className="inline-image-container">
-                <span className="inline-image image-4"></span>
-              </span>
-              <em>building trust, and fostering enduring partnerships.</em>
-              <span className="inline-image-container">
-                <span className="inline-image image-5"></span>
-              </span>
+            <p className="text-italic">
+              As industry pioneers with a sharp focus on land banking,
+              <img src="/assets/about 1.png" alt="" className="inline-image" />we specialize in 
+               <img src="/assets/about 2.png" alt="" className="inline-image" />
+              identifying untapped opportunities &amp; transforming them into
+              thriving, high-value assets. Our expertise spans across a wide
+              spectrum of real estate
+              <img src="/assets/about 3.png" alt="" className="inline-image" />
+              services, from property valuation to development, making us the
+              go-to partner for individuals and businesses looking to invest in
+              a smarter tomorrow. At XSquared, we’re not just about
+              transactions—we’re about creating value,
+              <img src="/assets/about 4.png" alt="" className="inline-image" />
+              <img src="/assets/about 5.png" alt="" className="inline-image" />
+              building trust, and fostering enduring partnerships.
             </p>
           </motion.div>
         </div>
       </div>
-
       <style jsx>{`
         .about {
-          background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-          padding: 6rem 0;
+          background : #F3793C;
+          padding: 6% 0 6% 0 ;
           position: relative;
           overflow: hidden;
           border-radius: 20px;
-          margin: 0 0px;
+          margin: 2rem 0rem;
+        }
+
+        .container {
+          max-width: 1400px;
+          margin: 0 auto;
         }
 
         .about-content {
-          max-width: 1000px;
-          margin: 0 auto;
+          width: 100%;
+          padding: 0 2rem;
         }
 
         .about-header {
           margin-bottom: 3rem;
         }
-
-        .section-title {
-          font-size: 1.2rem;
-          font-weight: 600;
-          color: FFFFFF;
-          margin: 0;
-          letter-spacing: 2px;
-          text-align: left;
-          position: relative;
-          display: inline-block;
+        .abouts-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 3rem;
+          gap: 1.5rem;
         }
-
-        .section-title::after {
-          content: '';
-          position: absolute;
-          left: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 80px;
-          height: 2px;
-          background-color: white;
-          margin-left: 20px;
+        .abouts-label {
+          color: #FFFFF3;
+          font-size: 2rem;
+          font-weight: 500;
+          letter-spacing: 2px;
+          margin: 0;
+          white-space: nowrap;
+        }
+        .header-line {
+          flex: 0 0 80px;
+          height: 1px;
+          background: #FFFFF3;
+        }
+        .section-title {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+          font-size: 0px;
+          color: #FFFFF3;
+          margin: 0;
+          letter-spacing: 0.15em;
+          text-align: left;
         }
 
         .about-text {
           color: white;
-          font-size: 1.8rem;
-          line-height: 1.8;
-          font-weight: 300;
+          max-width: 100%;
+        }
+
+        .text-block {
+          display: block;
+          margin-bottom: 0.3rem;
+          line-height: 2.2;
           text-align: left;
         }
 
-        .about-paragraph {
-          margin-bottom: 1.5rem;
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .about-paragraph em {
+        .text-italic {
           font-style: italic;
-          font-family: 'Times New Roman', Times, serif;
+          font-family: 'Times New Roman', Georgia, serif;
+          font-size: 2.2rem;
+          font-weight: 300;
+          letter-spacing: 0.01em;
+          vertical-align: middle;
+          line-height: 6rem;
+          text-align: justify;
+          text-wrap: pretty;
+          
         }
 
-        .inline-image-container {
-          display: inline-flex;
-          align-items: center;
-          margin: 0 0.5rem;
+        .image-wrapper {
+          display: inline-block;
+          vertical-align: middle;
+          margin: 0 0rem;
+          position: relative;
         }
 
         .inline-image {
-          width: 80px;
-          height: 60px;
-          border-radius: 8px;
-          background-size: cover;
-          background-position: center;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          flex-shrink: 0;
+          height: 5%;
+          margin : 0 20px;
+          width: auto;
+          min-width: 100px;
+          max-width: 300px;
+          border-radius: 5px;
+          object-fit: cover;
+          display: inline-block;
+          vertical-align: middle;
+          transform: skewX(-12deg);
+          transition: all 0.3s ease;
         }
 
-        .image-1 {
-          background: linear-gradient(45deg, #d4b896 0%, #c8a882 100%);
-          background-image: 
-            radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-            linear-gradient(135deg, transparent 30%, rgba(160, 140, 110, 0.3) 50%, transparent 70%);
+        .inline-image:hover {
+          transform: skewX(-12deg) scale(1.05);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
         }
 
-        .image-2 {
-          background: linear-gradient(45deg, #b8a082 0%, #a68f70 100%);
-          background-image: 
-            radial-gradient(circle at 70% 30%, rgba(255, 248, 235, 0.3) 0%, transparent 40%),
-            linear-gradient(45deg, transparent 40%, rgba(140, 120, 90, 0.4) 60%, transparent 80%);
-        }
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+          .about {
+            padding: 3.5rem 2.5rem;
+          }
 
-        .image-3 {
-          background: linear-gradient(45deg, #e8dcc6 0%, #d4c4b0 100%);
-          background-image: 
-            radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 30%),
-            linear-gradient(90deg, transparent 20%, rgba(180, 160, 130, 0.3) 40%, transparent 80%);
-        }
+          .about-content {
+            padding: 0 1.5rem;
+          }
 
-        .image-4 {
-          background: linear-gradient(45deg, #c0a888 0%, #b09976 100%);
-          background-image: 
-            radial-gradient(circle at 80% 80%, rgba(255, 248, 235, 0.2) 0%, transparent 50%),
-            linear-gradient(135deg, transparent 25%, rgba(150, 130, 100, 0.4) 45%, transparent 75%);
-        }
-
-        .image-5 {
-          background: linear-gradient(45deg, #d8c8a8 0%, #c4b094 100%);
-          background-image: 
-            radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 40%),
-            linear-gradient(45deg, transparent 30%, rgba(170, 150, 120, 0.3) 50%, transparent 70%);
-        }
-
-        @media (max-width: 1024px) {
-          .about-text {
-            font-size: 1.6rem;
+          .text-italic {
+            font-size: 2rem;
           }
 
           .inline-image {
-            width: 70px;
-            height: 50px;
+            height: 2.5rem;
+            min-width: 3.5rem;
+            max-width: 4.5rem;
           }
         }
 
         @media (max-width: 768px) {
           .about {
-            padding: 4rem 0;
+            padding: 3rem 2rem;
+            margin: 1.5rem 0.5rem;
+            border-radius: 20px;
           }
 
-          .about-text {
-            font-size: 1.3rem;
-            line-height: 1.7;
+          .about-content {
+            padding: 0 1rem;
+          }
+
+          .about-header {
+            margin-bottom: 2.5rem;
+          }
+
+          .section-title {
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+          }
+
+          .text-italic {
+            font-size: 1.5rem;
+          }
+
+          .text-block {
+            line-height: 2;
+            margin-bottom: 0.2rem;
           }
 
           .inline-image {
-            width: 60px;
-            height: 45px;
+            height: 2rem;
+            min-width: 3rem;
+            max-width: 4rem;
+            transform: skewX(-10deg);
+            border-radius: 8px;
           }
 
-          .about-paragraph {
-            margin-bottom: 2rem;
+          .image-wrapper {
+            margin: 0 0.3rem;
           }
         }
 
         @media (max-width: 480px) {
-          .about-text {
-            font-size: 1.1rem;
+          .about {
+            padding: 2.5rem 1.5rem;
+            margin: 1rem 0.25rem;
+            border-radius: 16px;
+          }
+
+          .about-content {
+            padding: 0 0.5rem;
+          }
+
+          .about-header {
+            margin-bottom: 2rem;
+          }
+
+          .section-title {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+          }
+
+          .text-italic {
+            font-size: 1.15rem;
+          }
+
+          .text-block {
+            line-height: 1.8;
+            margin-bottom: 0.15rem;
           }
 
           .inline-image {
-            width: 50px;
-            height: 35px;
+            height: 1.6rem;
+            min-width: 2.5rem;
+            max-width: 3.5rem;
+            transform: skewX(-8deg);
+            border-radius: 6px;
           }
+
+          .image-wrapper {
+            margin: 0 0.2rem;
+          }
+        }
+
+        /* Animation for images on scroll */
+        @keyframes fadeInSkew {
+          from {
+            opacity: 0;
+            transform: skewX(-12deg) translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: skewX(-12deg) translateY(0);
+          }
+        }
+
+        .inline-image {
+          animation: fadeInSkew 0.6s ease-out forwards;
         }
       `}</style>
     </section>

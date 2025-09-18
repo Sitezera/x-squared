@@ -8,30 +8,32 @@ const Services = () => {
         <div className="services-content">
           {/* Hero Image and Title */}
           <div className="services-hero">
-            <div className="hero-image">
-              <div className="placeholder-image"></div>
+            <div className="hero-content">
+              <motion.h2
+                className="services-title"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                Our Services
+              </motion.h2>
+              <motion.p
+                className="services-description"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                We are a real estate firm with over 15 years of expertise,
+                and our main goal is to provide amazing locations to our
+                partners and clients. Within the luxury real estate market,
+                our agency offers customized solutions.
+              </motion.p>
             </div>
-            <motion.h2 
-              className="services-title"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              Our Services
-            </motion.h2>
-            <motion.p 
-              className="services-description"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              We are a real estate firm with over 15 years of expertise, 
-              offering top-tier leads to provide amazing outcomes to our 
-              partners and clients. Within the luxury real estate market, 
-              our agency drives customized solutions.
-            </motion.p>
+            <div className="hero-image">
+              <img src="/assets/sevices.png" alt="Our Services" className="service-hero-img" />
+            </div>
           </div>
 
           {/* Service Cards */}
@@ -44,42 +46,42 @@ const Services = () => {
           >
             <div className="service-card">
               <div className="service-icon">
-                <div className="icon-placeholder project-icon"></div>
+                <img src="/assets/service icon1.png" alt="Project Management" className="service-icon-img" />
               </div>
               <h3 className="service-name">PROJECT MANAGEMENT & CONSULTATION</h3>
               <p className="service-text">
-                Squared offers dynamic project management and 
-                consultation services to streamline every stage of your 
-                real estate journey. From planning to delivery, 
-                we tackle complexities with strategic foresight and 
+                Squared offers dynamic project management and
+                consultation services to streamline every stage of your
+                real estate journey. From planning to delivery,
+                we tackle complexities with strategic foresight and
                 meticulous execution.
               </p>
             </div>
 
             <div className="service-card">
               <div className="service-icon">
-                <div className="icon-placeholder enabler-icon"></div>
+                <img src="/assets/service icon2.png" alt="Project Enabler" className="service-icon-img" />
               </div>
               <h3 className="service-name">PROJECT ENABLER</h3>
               <p className="service-text">
-                We take your vision and turn it into a reality. 
-                From conceptualization to execution, Squared 
-                acts as the backbone of your project, providing 
-                seamless support across legal, financial, and 
+                We take your vision and turn it into a reality.
+                From conceptualization to execution, Squared
+                acts as the backbone of your project, providing
+                seamless support across legal, financial, and
                 operational requirements.
               </p>
             </div>
 
             <div className="service-card">
               <div className="service-icon">
-                <div className="icon-placeholder portfolio-icon"></div>
+                <img src="/assets/service icone 3.png" alt="Portfolio Management" className="service-icon-img" />
               </div>
               <h3 className="service-name">END-TO-END PORTFOLIO MANAGEMENT</h3>
               <p className="service-text">
-                Squared provides comprehensive portfolio management 
-                solutions, taking the burden off your shoulders. From 
-                acquisition to asset enhancement and final divestment, 
-                we handle it all. We ensure your portfolio grows with 
+                Squared provides comprehensive portfolio management
+                solutions, taking the burden off your shoulders. From
+                acquisition to asset enhancement and final divestment,
+                we handle it all. We ensure your portfolio grows with
                 precision, purpose, and maximum returns.
               </p>
             </div>
@@ -106,50 +108,49 @@ const Services = () => {
         .services-hero {
           position: relative;
           margin-bottom: 4rem;
+          padding: 2rem 0;
           height: 400px;
         }
 
-        .hero-image {
+        .hero-content {
           position: absolute;
-          top: 50px;
-          right: 0;
-          width: 500px;
-          height: 300px;
-          border-radius: 12px;
-          overflow: hidden;
-        }
-
-        .placeholder-image {
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-          background-image: 
-            radial-gradient(circle at 30% 20%, rgba(200, 200, 200, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 70% 80%, rgba(180, 180, 180, 0.2) 0%, transparent 40%);
+          top: 0;
+          left: 0;
+          max-width: 450px;
+          z-index: 10;
         }
 
         .services-title {
-          position: absolute;
-          top: 20px;
-          left: 0;
           font-family: 'Times New Roman', Times, serif;
           font-size: 3.5rem;
           font-weight: 400;
           font-style: italic;
           color: #F3793C;
-          margin: 0;
-          z-index: 10;
+          margin: 0 0 2rem 0;
+          line-height: 1.2;
         }
 
         .services-description {
-          position: absolute;
-          top: 150px;
-          left: 0;
           color: #FFFFF3;
           font-size: 1rem;
           line-height: 1.6;
           margin: 0;
-          max-width: 450px;
+        }
+
+        .hero-image {
+          position: absolute;
+          top: -20px;
+          right: -50px;
+          width: 580px;
+          height: 350px;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+
+        .service-hero-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .services-grid {
@@ -167,22 +168,10 @@ const Services = () => {
           margin-bottom: 1.5rem;
         }
 
-        .icon-placeholder {
+        .service-icon-img {
           width: 50px;
           height: 50px;
-          border-radius: 8px;
-        }
-
-        .project-icon {
-          background: linear-gradient(135deg, #F3793C 0%, #e85d04 100%);
-        }
-
-        .enabler-icon {
-          background: linear-gradient(135deg, #F3793C 0%, #e85d04 100%);
-        }
-
-        .portfolio-icon {
-          background: linear-gradient(135deg, #F3793C 0%, #e85d04 100%);
+          object-fit: contain;
         }
 
         .service-name {
@@ -205,22 +194,21 @@ const Services = () => {
 
         @media (max-width: 1024px) {
           .services-hero {
-            height: 500px;
+            height: 450px;
           }
 
-          .hero-image {
-            width: 400px;
-            height: 250px;
-            top: 100px;
+          .hero-content {
+            max-width: 400px;
           }
 
           .services-title {
             font-size: 3rem;
           }
 
-          .services-description {
-            top: 180px;
-            max-width: 350px;
+          .hero-image {
+            width: 480px;
+            height: 300px;
+            right: -30px;
           }
 
           .services-grid {
@@ -239,40 +227,30 @@ const Services = () => {
           }
 
           .services-hero {
-            height: 600px;
+            height: 500px;
+          }
+
+          .hero-content {
+            position: static;
+            max-width: none;
+            margin-bottom: 2rem;
+          }
+
+          .services-title {
+            font-size: 2.5rem;
           }
 
           .hero-image {
             position: static;
             width: 100%;
-            height: 250px;
-            margin-bottom: 2rem;
-          }
-
-          .services-title {
-            position: static;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-          }
-
-          .services-description {
-            position: static;
-            max-width: none;
+            height: 280px;
+            right: auto;
+            top: auto;
           }
 
           .services-grid {
             grid-template-columns: 1fr;
             gap: 2.5rem;
-          }
-
-          .statements-header {
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-          }
-
-          .statements-nav {
-            justify-content: center;
           }
         }
 
@@ -281,16 +259,8 @@ const Services = () => {
             font-size: 2rem;
           }
 
-          .hero-image {
-            height: 200px;
-          }
-
-          .statements-nav {
+          .services-hero {
             gap: 1rem;
-          }
-
-          .nav-item {
-            font-size: 0.8rem;
           }
         }
       `}</style>
