@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ const Footer = () => {
     service: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -17,10 +20,44 @@ const Footer = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR_ACCESS_KEY_HERE', // Replace with your Web3Forms access key
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          message: formData.message,
+          subject: `New Contact Form Submission from ${formData.name}`,
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          service: '',
+          message: ''
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -33,6 +70,21 @@ const Footer = () => {
             <p className="section-subtitle">Let's bring your real estate vision to life.</p>
             
             <form className="contact-form" onSubmit={handleSubmit}>
+              {/* Web3Forms Access Key - Hidden Field */}
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="status-message success">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="status-message error">
+                  Something went wrong. Please try again.
+                </div>
+              )}
+
               <div className="form-row">
                 <input
                   type="text"
@@ -42,6 +94,7 @@ const Footer = () => {
                   onChange={handleInputChange}
                   required
                   className="form-input"
+                  disabled={isSubmitting}
                 />
                 <input
                   type="email"
@@ -51,6 +104,7 @@ const Footer = () => {
                   onChange={handleInputChange}
                   required
                   className="form-input"
+                  disabled={isSubmitting}
                 />
               </div>
               
@@ -61,6 +115,7 @@ const Footer = () => {
                   onChange={handleInputChange}
                   className="form-select"
                   required
+                  disabled={isSubmitting}
                 >
                   <option value="">Select Type of Services</option>
                   <option value="project-management">Project Management</option>
@@ -78,16 +133,18 @@ const Footer = () => {
                   onChange={handleInputChange}
                   rows="4"
                   className="form-textarea"
+                  disabled={isSubmitting}
                 />
               </div>
               
               <motion.button
                 type="submit"
                 className="submit-button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                disabled={isSubmitting}
               >
-                SUBMIT
+                {isSubmitting ? 'SENDING...' : 'SUBMIT'}
               </motion.button>
             </form>
           </div>
@@ -97,22 +154,22 @@ const Footer = () => {
             <div className="links-column">
               <h3 className="column-title">EXPLORE</h3>
               <ul className="link-list">
-                <li><a href="#properties">All Properties</a></li>
-                <li><a href="#agents">Our Agents</a></li>
-                <li><a href="#projects">All Projects</a></li>
-                <li><a href="#process">Our Process</a></li>
-                <li><a href="#neighborhood">Neighborhood</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/projects">All Projects</Link></li>
+                <li><Link to="/team">Our Team</Link></li>
+                <li><Link to="/services">Services</Link></li>
               </ul>
             </div>
-            
+
             <div className="links-column">
-              <h3 className="column-title">USEFUL LINK</h3>
+              <h3 className="column-title">USEFUL LINKS</h3>
               <ul className="link-list">
-                <li><a href="#about">About us</a></li>
-                <li><a href="#featured">Featured Properties</a></li>
-                <li><a href="#services">Our Best Services</a></li>
-                <li><a href="#visit">Request Visit</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><Link to="/services">Our Services</Link></li>
+                <li><Link to="/projects">Featured Projects</Link></li>
+                <li><Link to="/faq">FAQ</Link></li>
+                <li><Link to="/contact">Contact Us</Link></li>
+                <li><Link to="/team">Leadership</Link></li>
               </ul>
             </div>
           </div>
@@ -122,8 +179,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-brand">
             <div className="brand-logo">
-              <span className="logo-x">X</span>
-              <span className="logo-text">SQUARED</span>
+              <img src="/assets/Layer 47.svg" alt="XSquared Logo" className="footer-logo-image" />
             </div>
             <p className="brand-description">
               XSquared transforms land into high-value assets with precision, strategy, and vision.
@@ -217,6 +273,27 @@ const Footer = () => {
           max-width: 500px;
         }
 
+        .status-message {
+          padding: 1rem;
+          border-radius: 8px;
+          margin-bottom: 1.5rem;
+          font-size: 0.9rem;
+          text-align: center;
+          font-weight: 500;
+        }
+
+        .status-message.success {
+          background-color: #d4edda;
+          color: #155724;
+          border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+          background-color: #f8d7da;
+          color: #721c24;
+          border: 1px solid #f5c6cb;
+        }
+
         .form-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -289,6 +366,18 @@ const Footer = () => {
           background: #3A1D19;
         }
 
+        .submit-button:disabled {
+          background: #ccc;
+          color: #666;
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+
+        .submit-button:disabled:hover {
+          background: #ccc;
+          transform: none;
+        }
+
         .footer-links {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -337,21 +426,13 @@ const Footer = () => {
         .brand-logo {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
           margin-bottom: 1rem;
         }
 
-        .logo-x {
-          color: #F3793C;
-          font-size: 1.5rem;
-          font-weight: 700;
-        }
-
-        .logo-text {
-          color: #4E2520;
-          font-size: 1.2rem;
-          font-weight: 600;
-          letter-spacing: 1px;
+        .footer-logo-image {
+          height: 45px;
+          width: auto;
+          max-width: 180px;
         }
 
         .brand-description {

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +17,13 @@ const Navbar = () => {
   }, [])
 
   const navItems = [
-    { name: 'HOME', href: '#home' },
-    { name: 'ABOUT US', href: '#about' },
-    { name: 'PROJECTS', href: '#projects' },
-    { name: 'OUR TEAM', href: '#team' },
-    { name: 'RESOURCE', href: '#resource' },
-    { name: 'CONTACT US', href: '#contact' }
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT US', href: '/about' },
+    { name: 'PROJECTS', href: '/projects' },
+    { name: 'OUR TEAM', href: '/team' },
+    { name: 'SERVICES', href: '/services' },
+    { name: 'FAQ', href: '/faq' },
+    { name: 'CONTACT US', href: '/contact' }
   ]
 
   return (
@@ -33,21 +36,22 @@ const Navbar = () => {
       <div className="container">
         <div className="nav-content">
           <div className="logo">
-            <h2><span className="x-orange">X</span> SQUARED</h2>
+            <img src="/assets/Layer 47.svg" alt="XSquared Logo" className="logo-image" />
           </div>
 
           <div className="nav-links desktop-nav">
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="nav-link"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                {item.name}
-              </motion.a>
+              <motion.div key={item.name}>
+                <Link
+                  to={item.href}
+                  className={`nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
@@ -68,17 +72,18 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
           >
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="mobile-nav-link"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.name}
-              </motion.a>
+              <motion.div key={item.name}>
+                <Link
+                  to={item.href}
+                  className={`mobile-nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         )}
@@ -110,12 +115,15 @@ const Navbar = () => {
           padding: 1rem 0;
         }
 
-        .logo h2 {
-          font-size: 1.5rem;
-          font-weight: 600;
-          color: #4E2520;
-          margin: 0;
-          letter-spacing: 1px;
+        .logo {
+          display: flex;
+          align-items: center;
+        }
+
+        .logo-image {
+          height: 40px;
+          width: auto;
+          max-width: 150px;
         }
 
         .x-orange {
@@ -137,7 +145,8 @@ const Navbar = () => {
           letter-spacing: 0.5px;
         }
 
-        .nav-link:hover {
+        .nav-link:hover,
+        .nav-link.active {
           color: #f3793c;
         }
 
@@ -190,7 +199,8 @@ const Navbar = () => {
           letter-spacing: 0.5px;
         }
 
-        .mobile-nav-link:hover {
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
           color: #f3793c;
         }
 
@@ -207,8 +217,8 @@ const Navbar = () => {
             display: block;
           }
 
-          .logo h2 {
-            font-size: 1.25rem;
+          .logo-image {
+            height: 35px;
           }
 
           .nav-links {

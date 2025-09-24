@@ -1,0 +1,254 @@
+.statements {
+    background: #FFFFF3;
+    padding: 5rem 0;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.statementsHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    gap: 2rem;
+}
+
+.sectionTitle {
+    color: #4E2520;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.dividerLine {
+    width: 150px;
+    height: 1px;
+    background-color: #4E2520 !important;
+    opacity: 0.7;
+    border: none;
+    background-image: none;
+}
+
+.statementsNav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navItem {
+    background: none;
+    border: none;
+    color: #f3793c;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+}
+.navItem:hover {
+    opacity: 0.8;
+}
+.navItem.active {
+    font-size: 1rem;
+    opacity: 1;
+    color: #4E2520;
+    font-weight: 500;
+}
+
+.statementsContent {
+    position: relative;
+    width: 100%;
+}
+
+.landscapeContainer {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.landscapeImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.landscapeImg {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.95);
+}
+
+.landscapeImage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+            rgba(243, 121, 60, 0.05) 0%,
+            transparent 40%,
+            rgba(78, 37, 32, 0.1) 100%);
+    pointer-events: none;
+}
+
+.statementOverlay {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 400px;
+    z-index: 2;
+}
+
+.statementTitle {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: #4E2520;
+    margin: 0 0 2rem 0;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    position: relative;
+    right: 20%;
+}
+
+.statementText {
+    color: #4E2520;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 2.5rem 0;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
+    text-align: justify;
+}
+
+.arrowButton {
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.arrowButton svg {
+    overflow: visible;
+}
+
+@media (max-width: 1024px) {
+    .landscapeContainer {
+        height: 450px;
+    }
+
+    .landscapeImage {
+        width: 70%;
+    }
+
+    .statementOverlay {
+        right: 5%;
+        max-width: 350px;
+    }
+
+    .statementTitle {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .statements {
+        padding: 3rem 0;
+    }
+
+    .statementsHeader {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .dividerLine {
+        width: 100%;
+        order: 2;
+    }
+
+    .statementsNav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .landscapeContainer {
+        height: 600px;
+        flex-direction: column;
+    }
+
+    .landscapeImage {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    .statementOverlay {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: -50px;
+        padding: 0 2rem;
+        max-width: none;
+        text-align: center;
+    }
+
+    .statementTitle {
+        font-size: 3rem;
+    }
+
+    .arrowButton {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .statementsNav {
+        gap: 1.5rem;
+    }
+
+    .navItem {
+        font-size: 0.7rem;
+    }
+
+    .landscapeContainer {
+        height: 500px;
+    }
+
+    .landscapeImage {
+        height: 280px;
+    }
+
+    .statementOverlay {
+        padding: 0 1.5rem;
+    }
+
+    .statementTitle {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .statementText {
+        font-size: 0.9rem;
+    }
+}
