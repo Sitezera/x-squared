@@ -44,10 +44,18 @@
 }
 
 .headerLine {
-    flex: 1;
+    position: absolute;
+    width: 200px;
     height: 1px;
-    background: #FFFFF3;
-    max-width: 80px;
+    background: #ffffff;
+    top: 15px;
+}
+/* .slidingButton {
+  width: 24px;
+  height: 24px;
+} */
+.slidingBtnRight {
+  transform: rotate(180deg);
 }
 
 .projectsContent {
@@ -115,10 +123,10 @@
 .projectImageContainer {
     order: 2;
     position: relative;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    background: #FFFFFF;
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
+    background: transparent;
     padding: 3px;
     margin: 0 auto;
     width: 100%;
@@ -129,7 +137,7 @@
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     aspect-ratio: 4/3;
     object-fit: cover;
 }
@@ -138,10 +146,6 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -154,12 +158,12 @@
 }
 
 .navArrow:hover {
-    background: rgba(255, 255, 255, 0.25);
     transform: translateY(-50%) scale(1.1);
 }
 
 .navPrev {
-    left: 0.7rem; /* change here */
+    left: 0.7rem;
+    /* change here */
 }
 
 .navNext {
@@ -293,7 +297,6 @@
     }
 
     .projectImageContainer {
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         padding: 4px;
     }
 

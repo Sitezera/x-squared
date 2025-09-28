@@ -5,7 +5,16 @@ const Hero = () => {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isExpanded, setIsExpanded] = useState(false)
   const [touchStartY, setTouchStartY] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
   const sectionRef = useRef(null)
+
+  // Initial loading animation trigger
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100) // Small delay to ensure smooth start
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const handleWheel = (e) => {
@@ -84,38 +93,71 @@ const Hero = () => {
   const textOpacity = Math.max(0.3, 1 - scrollProgress * 0.7) // Fade out text slightly
 
   return (
-    <section className="hero" id="home">
+    <motion.section
+      className="hero"
+      id="home"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="hero-container" ref={sectionRef}>
         {/* Left text - "Where Ideas" */}
         <motion.div
           className="hero-text-left"
+          initial={{ x: -200, opacity: 0 }}
+          animate={isLoaded ? { x: 0, opacity: 1 } : { x: -200, opacity: 0 }}
+          transition={{
+            duration: 1.2,
+            delay: 0.5,
+            ease: [0.25, 0.25, 0.25, 0.75]
+          }}
           style={{
             transform: `translateX(${leftTextTranslate}px)`,
-            opacity: textOpacity
+            opacity: isLoaded ? textOpacity : 0
           }}
         >
-          <h1 className="hero-title">Where Ideas</h1>
+          <motion.h1
+            className="hero-title"
+            initial={{ y: 30, opacity: 0 }}
+            animate={isLoaded ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+          >
+            Where Ideas
+          </motion.h1>
         </motion.div>
 
         {/* Center image */}
         <motion.div
           className="hero-image-container"
+          initial={{ scale: 0.3, opacity: 0, y: 50 }}
+          animate={isLoaded ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.3, opacity: 0, y: 50 }}
+          transition={{
+            duration: 1.4,
+            delay: 0.2,
+            ease: [0.25, 0.25, 0.25, 0.75]
+          }}
           style={{
-            transform: `scale(${imageScale})`,
+            transform: `scale(${imageScale}) translateY(${isLoaded ? 0 : 50}px)`,
             zIndex: 1
           }}
         >
-          <img
+          <motion.img
             src="/assets/hero image.png"
             alt="Minimalist interior with natural light"
             className="hero-img"
+            initial={{ scale: 1.2, filter: "blur(10px)" }}
+            animate={isLoaded ? { scale: 1, filter: "blur(0px)" } : { scale: 1.2, filter: "blur(10px)" }}
+            transition={{ duration: 1.6, delay: 0.8 }}
           />
 
           {/* Overlay that fades out as image expands */}
           <motion.div
             className="image-overlay"
+            initial={{ opacity: 0.8 }}
+            animate={isLoaded ? { opacity: Math.max(0, 0.2 - scrollProgress * 0.2) } : { opacity: 0.8 }}
+            transition={{ duration: 1, delay: 1.2 }}
             style={{
-              opacity: Math.max(0, 0.2 - scrollProgress * 0.2)
+              opacity: isLoaded ? Math.max(0, 0.2 - scrollProgress * 0.2) : 0.8
             }}
           />
         </motion.div>
@@ -123,23 +165,50 @@ const Hero = () => {
         {/* Right text - "Takes Shape" */}
         <motion.div
           className="hero-text-right"
+          initial={{ x: 200, opacity: 0 }}
+          animate={isLoaded ? { x: 0, opacity: 1 } : { x: 200, opacity: 0 }}
+          transition={{
+            duration: 1.2,
+            delay: 0.7,
+            ease: [0.25, 0.25, 0.25, 0.75]
+          }}
           style={{
             transform: `translateX(${rightTextTranslate}px)`,
-            opacity: textOpacity
+            opacity: isLoaded ? textOpacity : 0
           }}
         >
-          <h1 className="hero-title">Takes Shape</h1>
+          <motion.h1
+            className="hero-title"
+            initial={{ y: 30, opacity: 0 }}
+            animate={isLoaded ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
+            Takes Shape
+          </motion.h1>
         </motion.div>
 
         {/* Scroll indicator */}
         {!isExpanded && (
           <motion.div
             className="scroll-indicator"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: scrollProgress < 0.1 ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: isLoaded && scrollProgress < 0.1 ? 1 : 0,
+              y: isLoaded ? 0 : 20
+            }}
+            transition={{
+              duration: 0.6,
+              delay: isLoaded ? 2.0 : 0,
+              ease: "easeOut"
+            }}
           >
-           
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isLoaded ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.4, delay: 2.2 }}
+            >
+              Scroll to explore
+            </motion.p>
           </motion.div>
         )}
       </div>
@@ -335,7 +404,7 @@ const Hero = () => {
           -ms-user-select: none;
         }
       `}</style>
-    </section>
+    </motion.section>
   )
 }
 

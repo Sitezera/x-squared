@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Projects.module.css'
+import slidingBtn from '/assets/slidingWhiteBtn.svg'
 
 const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0)
@@ -48,8 +49,9 @@ const Projects = () => {
     <section className={styles.projects} id="projects">
       <div className={styles.projectsContainer}>
         <div className={styles.projectsHeader}>
-          <h2 className={styles.sectionLabel}>LATEST PROJECT</h2>
-          <div className={styles.headerLine}></div>
+          <h2 className={styles.sectionLabel}>LATEST PROJECT
+            <span className={styles.headerLine}></span>
+          </h2>
         </div>
 
         <div className={styles.projectsContent}>
@@ -110,9 +112,7 @@ const Projects = () => {
             onClick={prevProject}
             aria-label="Previous project"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img className={styles.slidingButton} src={slidingBtn} alt="sliding button" />
           </button>
 
           <button
@@ -120,9 +120,7 @@ const Projects = () => {
             onClick={nextProject}
             aria-label="Next project"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img className={`${styles.slidingButton} ${styles.slidingBtnRight}`} src={slidingBtn} alt="sliding button" />
           </button>
 
           <div className={styles.projectDots}>

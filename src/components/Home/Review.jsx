@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Review.module.css'
+import slidingBtm from '/assets/slidingBtn.svg'
 
 const Review = () => {
   const [currentReview, setCurrentReview] = useState(0)
@@ -63,7 +64,7 @@ const Review = () => {
 
         <div className={styles.reviewContent}>
           <button className={`${styles.navArrow} ${styles.prevArrow}`} onClick={prevReview}>
-            <span>‹</span>
+            <span><img src={slidingBtm} alt="sliding button" /></span>
           </button>
 
           <div className={styles.reviewMain}>
@@ -109,7 +110,7 @@ const Review = () => {
           </div>
 
           <button className={`${styles.navArrow} ${styles.nextArrow}`} onClick={nextReview}>
-            <span>›</span>
+            <span><img src={slidingBtm} alt="sliding button" /></span>
           </button>
         </div>
       </div>

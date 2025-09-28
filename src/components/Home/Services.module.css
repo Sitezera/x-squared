@@ -4,7 +4,7 @@
     margin: 0 0px;
     border-radius: 20px;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
 }
 
 .container {
@@ -56,10 +56,8 @@
 }
 
 .heroImage {
-    /* max-width: 60%; */
     width: 80%;
     height: auto;
-    border-radius: 12px;
     overflow: hidden;
     position: relative;
 }

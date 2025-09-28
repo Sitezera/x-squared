@@ -16,8 +16,10 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
           <div className="abouts-header">
-            <h2 className="abouts-label">ABOUT US</h2>
-            <div className="header-line"></div>
+            <h2 className="abouts-label">ABOUT US
+             
+            </h2>
+             <span className="header-line"></span>
           </div>
           </motion.div>
 
@@ -67,11 +69,11 @@ const About = () => {
         .about-header {
           margin-bottom: 3rem;
         }
-        .abouts-header {
+         .abouts-header {
           display: flex;
-          align-items: center;
+          align-items: baseline;
           margin-bottom: 3rem;
-          gap: 1.5rem;
+          
         }
         .abouts-label {
           color: #FFFFF3;
@@ -82,7 +84,7 @@ const About = () => {
           white-space: nowrap;
         }
         .header-line {
-          flex: 0 0 80px;
+          flex: 0 0 200px;
           height: 1px;
           background: #FFFFF3;
         }
