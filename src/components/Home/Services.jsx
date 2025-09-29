@@ -52,7 +52,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
+              
             >
               <motion.div
                 className={styles.serviceIcon}
@@ -94,7 +94,6 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
             >
               <motion.div
                 className={styles.serviceIcon}
@@ -102,7 +101,6 @@ const Services = () => {
                 whileInView={{ scale: 1, rotate: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, type: "spring", stiffness: 200 }}
                 viewport={{ once: true }}
-                whileHover={{ rotate: -10, scale: 1.1 }}
               >
                 <img src="/assets/service icon2.png" alt="Project Enabler" className={styles.serviceIconImg} />
               </motion.div>
@@ -136,7 +134,6 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.02 }}
             >
               <motion.div
                 className={styles.serviceIcon}
@@ -144,7 +141,6 @@ const Services = () => {
                 whileInView={{ scale: 1, rotate: 0 }}
                 transition={{ duration: 0.6, delay: 0.9, type: "spring", stiffness: 200 }}
                 viewport={{ once: true }}
-                whileHover={{ rotate: 10, scale: 1.1 }}
               >
                 <img src="/assets/service icone 3.png" alt="Portfolio Management" className={styles.serviceIconImg} />
               </motion.div>

@@ -112,12 +112,12 @@ const About = () => {
         .text-italic {
           font-style: italic;
           font-family: 'Times New Roman', Georgia, serif;
-          font-size: 2.2rem;
+          font-size: 2rem;
           font-weight: 300;
           letter-spacing: 0.01em;
           vertical-align: middle;
           line-height: 6rem;
-          text-align: justify;
+          text-align: left;
           text-wrap: pretty;
           
         }
