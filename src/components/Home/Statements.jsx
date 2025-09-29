@@ -90,7 +90,7 @@ const Statements = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={nextStatement}
               >
-                <svg width="50" height="2" viewBox="0 0 50 2" fill="none">
+                <svg width="50" height="40" viewBox="0 0 50 2" fill="none">
                   <line x1="0" y1="1" x2="45" y2="1" stroke="#4E2520" strokeWidth="1"/>
                   <path d="M45 1L50 1M50 1L45 -2M50 1L45 4" stroke="#4E2520" strokeWidth="1"/>
                 </svg>

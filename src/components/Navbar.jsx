@@ -95,7 +95,7 @@ const Navbar = () => {
           top: 0;
           left: 0;
           right: 0;
-          padding: 2%;
+          padding: 1%;
           background: transparent;
           z-index: 1000;
           transition: all 0.3s ease;
