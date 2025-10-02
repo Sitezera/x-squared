@@ -64,9 +64,6 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  // Enable global smooth scrolling 
-  useSmoothScroll();
-
   return (
     <Router>
       <AppContent />
@@ -78,7 +75,10 @@ const App = () => {
 const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  
+
+  // Enable global smooth scrolling with pathname for scroll-to-top
+  useSmoothScroll(location.pathname);
+
   return (
     <div className="App">
       <ScrollProgressBar />

@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Team.module.css'
 import slidingBtn from '/assets/slidingBtn.svg'
 
 const Team = () => {
+  const [currentPair, setCurrentPair] = useState(0)
+
   const teamMembers = [
     { name: "Naveen Reddy", title: "Co-Founder and New Acquisitions", image: "/assets/naveen reddy.png" },
-    { name: "Varun Mukherjee", title: "Founder and Strategic Investments", image: "/assets/varun mukherjee.png" }
+    { name: "Varun Mukherjee", title: "Founder and Strategic Investments", image: "/assets/varun mukherjee.png" },
+    { name: "Nikhil Arora", title: "Founder, Strategic Investments", image: "/assets/Nikhil Arora.png" },
+    { name: "Sanket Shah", title: "Head of Design and Strategy", image: "/assets/SS.jpeg" },
   ]
+
+  const handlePrevious = () => {
+    setCurrentPair((prev) => (prev === 0 ? 1 : 0))
+  }
+
+  const handleNext = () => {
+    setCurrentPair((prev) => (prev === 0 ? 1 : 0))
+  }
+
+  const leftIndex = currentPair * 2
+  const rightIndex = currentPair * 2 + 1
 
   return (
     <section className={styles.team} id="team">
@@ -31,39 +46,46 @@ const Team = () => {
         </motion.div>
 
         <div className={styles['team-container']}>
-          <button className={`${styles['nav-button']} ${styles['nav-left']}`} aria-label="Previous team member">
+          <button className={`${styles['nav-button']} ${styles['nav-left']}`} onClick={handlePrevious} aria-label="Previous team member">
             <img src={slidingBtn} alt="sliding button" />
           </button>
 
-        
+
           <div className={styles['team-content']}>
-            <div className={styles['team-layout']}>
+            <motion.div
+              className={styles['team-layout']}
+              key={currentPair}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+            >
               <div>
                 <div className={styles['member-image-container']}>
-                  <img src={teamMembers[0].image} alt={teamMembers[0].name} className={styles['member-image']} />
+                  <img src={teamMembers[leftIndex].image} alt={teamMembers[leftIndex].name} className={styles['member-image']} />
                 </div>
               </div>
               <div className={styles['member-name-title-left']}>
                 <div className={styles['member-info']}>
-                  <h3 className={styles['member-name']}>{teamMembers[0].name}</h3>
-                  <p className={styles['member-title']}>{teamMembers[0].title}</p>
+                  <h3 className={styles['member-name']}>{teamMembers[leftIndex].name}</h3>
+                  <p className={styles['member-title']}>{teamMembers[leftIndex].title}</p>
                 </div>
               </div>
               <div className={styles['member-name-title-right']}>
                 <div className={styles['member-info-right']}>
-                  <h3 className={styles['member-name']}>{teamMembers[1].name}</h3>
-                  <p className={styles['member-title']}>{teamMembers[1].title}</p>
+                  <h3 className={styles['member-name']}>{teamMembers[rightIndex].name}</h3>
+                  <p className={styles['member-title']}>{teamMembers[rightIndex].title}</p>
                 </div>
               </div>
               <div>
                 <div className={styles['member-image-container']}>
-                  <img src={teamMembers[1].image} alt={teamMembers[1].name} className={styles['member-image']} />
+                  <img src={teamMembers[rightIndex].image} alt={teamMembers[rightIndex].name} className={styles['member-image']} />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <button className={`${styles['nav-button']} ${styles['nav-right']}`} aria-label="Next team member">
+          <button className={`${styles['nav-button']} ${styles['nav-right']}`} onClick={handleNext} aria-label="Next team member">
             <img className={styles['rightBtn']} src={slidingBtn} alt="sliding button" />
           </button>
         </div>

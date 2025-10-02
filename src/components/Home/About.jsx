@@ -166,11 +166,9 @@ const About = () => {
         }
 
         .inline-image {
-          height: auto;
-          margin: 0 15px;
-          width: auto;
-          min-width: 80px;
-          max-width: 200px;
+          height: 3.5rem;
+          width: 20rem;
+          margin: 0 10px;
           border-radius: 5px;
           object-fit: cover;
           display: inline-block;
@@ -192,12 +190,12 @@ const About = () => {
         .inline-image-wrapper {
           display: inline-block;
           vertical-align: middle;
-          margin: 0 5px;
+          margin: 0 3px;
+          line-height: 0;
         }
 
         .header-line {
           transform-origin: left;
-          margin-left: 2rem;
         }
 
         /* Responsive Design */
