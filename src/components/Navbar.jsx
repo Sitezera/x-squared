@@ -65,6 +65,18 @@ const Navbar = () => {
               />
             </Link>
 
+            <div className="desktop-nav">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`desktop-nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
             <button
               className="hamburger-button"
               onClick={toggleMenu}
@@ -177,7 +189,6 @@ const Navbar = () => {
         .nav-content {
           display: flex;
           align-items: center;
-          justify-content: space-between;
           padding: 0.5rem 0;
         }
 
@@ -189,7 +200,7 @@ const Navbar = () => {
         }
 
         .logo-image {
-          height: 45px;
+          height: 6vh;
           width: auto;
           max-width: 180px;
           transition: transform 0.3s ease;
@@ -209,6 +220,7 @@ const Navbar = () => {
           justify-content: center;
           transition: transform 0.3s ease;
           z-index: 10;
+          margin: 0 -7rem;
         }
 
         .hamburger-button:hover {
@@ -225,6 +237,27 @@ const Navbar = () => {
           width: 42px;
           height: auto;
           display: block;
+        }
+
+        .desktop-nav {
+          display: flex;
+          gap: 3rem;
+          align-items: center;
+          margin: 0 8rem;
+        }
+
+        .desktop-nav-link {
+          text-decoration: none;
+          color: #4E2520;
+          font-size: 0.9rem;
+          letter-spacing: 0.5px;
+          transition: color 0.3s ease;
+          white-space: nowrap;
+        }
+
+        .desktop-nav-link:hover,
+        .desktop-nav-link.active {
+          color: #f3793c;
         }
 
         /* Menu Backdrop */
@@ -354,6 +387,16 @@ const Navbar = () => {
         }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+          .desktop-nav {
+            gap: 2rem;
+          }
+
+          .desktop-nav-link {
+            font-size: 0.85rem;
+          }
+        }
+
         @media (max-width: 768px) {
           .navbar {
             padding: 0.75rem 1.5rem;
@@ -366,6 +409,10 @@ const Navbar = () => {
 
           .hamburger-icon {
             width: 36px;
+          }
+
+          .desktop-nav {
+            display: none;
           }
 
           .menu-panel {

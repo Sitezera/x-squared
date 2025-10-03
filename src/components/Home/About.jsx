@@ -5,8 +5,8 @@ import { FadeInOnScroll, SlideInFromLeft, TextReveal, ScaleInOnScroll } from '..
 const About = () => {
   // Create one continuous paragraph with inline images
   const textSegments = [
-    { text: "At XSquared, we identify untapped land and transform it into thriving communities, luxury developments, and iconic spaces that create long-term value.", image: "/assets/about 1.png" },
-    { text: "We bring every stage of real estate under one roof—from legal clarity and design to construction, brand strategy, and sales.", image: "/assets/about 2.png" },
+    { text: "At XSquared, we identify untapped land and transform it into thriving communities, luxury developments, ", image: "/assets/about 1.png" },
+    { text: "and iconic spaces that create long term value. We bring every stage of real estate under one roof—from legal clarity and design to construction, brand strategy, and sales.", image: "/assets/about 2.png" },
     { text: "Our team combines deep industry expertise with a clear vision, ensuring projects are executed with transparency and precision.", image: "/assets/about 3.png" },
     { text: "We believe real estate is about unlocking possibilities and creating places people are proud to be part of.", image: "/assets/about 4.png" },
     { text: "Our mission is to turn vision into pride, transform land into lasting value, and leave a mark for generations.", image: "/assets/about 5.png" }
@@ -138,14 +138,10 @@ const About = () => {
         }
 
         .text-italic {
-          font-style: italic;
-          font-family: 'Times New Roman', Georgia, serif;
+          font-family: 'TheSeasonsRegularL', Georgia, serif;
           font-size: 1.8rem;
-          font-weight: 300;
-          letter-spacing: 0.01em;
-          line-height: 3.5rem;
+          line-height: 4rem;
           text-align: justify;
-          text-wrap: pretty;
           margin: 0;
         }
 

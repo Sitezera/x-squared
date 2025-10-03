@@ -231,8 +231,8 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
 
         .hero-image-container {
           position: relative;
-          width: 50%;
-          max-width: 50%;
+          width: 45%;
+          max-width: 45%;
           height: auto;
           z-index: 1;
           border-radius: 0;
@@ -266,7 +266,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
         }
 
         .hero-title {
-          font-family: 'Times New Roman', Georgia, serif;
+          font-family: 'TheSeasonsLight', Georgia, serif;
           font-size: clamp(3rem, 6vw, 5.5rem);
           font-weight: 300;
           font-style: italic;
@@ -320,7 +320,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           }
 
           .hero-text-right {
-            right: 8%;
+            right: 1%;
             bottom: 28%;
           }
 
