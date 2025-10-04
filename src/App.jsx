@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { PageTransition } from './components/animations/ScrollAnimations'
-import { ScrollProgressBar, ScrollToTopButton } from './components/animations/ScrollEnhancements'
+
 import { useSmoothScroll } from './hooks/useScrollAnimations'
 
 // Import pages
@@ -81,7 +81,7 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      <ScrollProgressBar />
+     
       
       {/* Conditionally render Navbar with animation for home page */}
       <motion.div
@@ -113,7 +113,7 @@ const AppContent = () => {
         <Footer />
       </motion.div>
       
-      <ScrollToTopButton />
+      
     </div>
   );
 };

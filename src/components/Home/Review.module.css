@@ -261,48 +261,79 @@
 
 @media (max-width: 768px) {
     .review {
-        padding: 4rem 0 8rem 0;
+        padding: 3rem 0 6rem 0;
+    }
+
+    .container {
+        padding: 0 1.5rem;
     }
 
     .reviewHeader {
-        margin-bottom: 3rem;
-    }
-
-    .sectionTitle::after {
-        display: none;
+        margin-bottom: 2rem;
     }
 
     .sectionTitle {
-        font-size: 1.1rem;
-        display: block;
-        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+
+    .sectionTitle::after {
+        width: 150px;
+        top: 65%;
+        margin-left: 1rem;
     }
 
     .sectionSubtitle {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
 
     .navArrow {
         display: none;
     }
 
+    .reviewMain {
+        display: flex;
+        flex-direction: column;
+    }
+
     .reviewImage {
-        height: 250px;
+        width: 100%;
+        height: auto;
+    }
+
+    .reviewImg {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
     }
 
     .testimonialCard {
-        padding: 1.5rem;
-        margin-top: -30px;
+        position: relative;
+        width: 100%;
+        max-width: none;
+        right: 0;
+        padding: 2rem 1.5rem;
+        margin-top: 0;
+        background: rgba(255, 255, 255, 0.95);
     }
 
     .quoteText {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         margin-bottom: 1.5rem;
+        line-height: 1.6;
+        font-style: italic;
+    }
+
+    .customerInfo {
+        gap: 1rem;
     }
 
     .customerAvatar {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
     }
 
     .customerName {
@@ -312,36 +343,56 @@
     .customerPosition {
         font-size: 0.85rem;
     }
+
+    .bottomLines {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
     .review {
-        padding: 3rem 0 6rem 0;
+        padding: 2.5rem 0 5rem 0;
     }
 
     .container {
-        padding: 0 1rem;
+        padding: 0 1.25rem;
     }
 
-    .reviewImage {
-        height: 200px;
+    .reviewHeader {
+        margin-bottom: 1.5rem;
     }
 
-    .testimonialCard {
-        padding: 1.2rem;
-    }
-
-    .quoteText {
+    .sectionTitle {
         font-size: 0.9rem;
     }
 
-    .customerInfo {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.5rem;
+    .sectionTitle::after {
+        width: 120px;
     }
 
-    .customerDetails {
-        width: 100%;
+    .sectionSubtitle {
+        font-size: 0.8rem;
+    }
+
+    .testimonialCard {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .quoteText {
+        font-size: 0.8rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .customerAvatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .customerName {
+        font-size: 0.95rem;
+    }
+
+    .customerPosition {
+        font-size: 0.8rem;
     }
 }

@@ -48,6 +48,17 @@ const Statements = () => {
         </div>
 
         <div className={styles.statementsContent}>
+          {/* Mobile Title - Shows above image on mobile */}
+          <motion.h3
+            className={styles.statementTitleMobile}
+            key={`${activeTab}-mobile`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {statements[activeTab].title}
+          </motion.h3>
+
           <motion.div
             className={styles.landscapeContainer}
             initial={{ opacity: 0 }}
@@ -56,13 +67,16 @@ const Statements = () => {
             viewport={{ once: true }}
           >
             <div className={styles.landscapeImage}>
-              <img 
-                src={img} 
-                alt="Mountain landscape with mist"
-                className={styles.landscapeImg}
-              />
+              <picture>
+                <source media="(max-width: 768px)" srcSet="/assets/statmentMobile.svg" />
+                <img
+                  src={img}
+                  alt="Mountain landscape with mist"
+                  className={styles.landscapeImg}
+                />
+              </picture>
             </div>
-            
+
             <div className={styles.statementOverlay}>
               <motion.h3
                 className={styles.statementTitle}
@@ -73,7 +87,7 @@ const Statements = () => {
               >
                 {statements[activeTab].title}
               </motion.h3>
-              
+
               <motion.p
                 className={styles.statementText}
                 key={`${activeTab}-text`}
@@ -83,7 +97,7 @@ const Statements = () => {
               >
                 {statements[activeTab].content}
               </motion.p>
-              
+
               <motion.div
                 className={styles.arrowButton}
                 whileHover={{ x: 10 }}
@@ -97,6 +111,31 @@ const Statements = () => {
               </motion.div>
             </div>
           </motion.div>
+
+          {/* Mobile Content - Shows below image on mobile */}
+          <div className={styles.statementContentMobile}>
+            <motion.p
+              className={styles.statementTextMobile}
+              key={`${activeTab}-text-mobile`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {statements[activeTab].content}
+            </motion.p>
+
+            <motion.div
+              className={styles.arrowButtonMobile}
+              whileHover={{ x: 10 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={nextStatement}
+            >
+              <svg width="50" height="40" viewBox="0 0 50 2" fill="none">
+                <line x1="0" y1="1" x2="45" y2="1" stroke="#4E2520" strokeWidth="1"/>
+                <path d="M45 1L50 1M50 1L45 -2M50 1L45 4" stroke="#4E2520" strokeWidth="1"/>
+              </svg>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

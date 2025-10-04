@@ -139,6 +139,7 @@ const About = () => {
 
         .text-italic {
           font-family: 'TheSeasonsRegularL', Georgia, serif;
+          font-style: italic;
           font-size: 1.8rem;
           line-height: 4rem;
           text-align: justify;
@@ -217,26 +218,36 @@ const About = () => {
 
         @media (max-width: 768px) {
           .about {
-            padding: 3rem 2rem;
-            margin: 1.5rem 0.5rem;
-            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 15px;
           }
 
           .about-content {
-            padding: 0 1rem;
+            padding: 0;
           }
 
           .about-header {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
           }
 
-          .section-title {
-            font-size: 1rem;
-            letter-spacing: 0.12em;
+          .abouts-header {
+            margin-bottom: 2rem;
+          }
+
+          .abouts-label {
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+          }
+
+          .header-line {
+            flex: 0 0 120px;
           }
 
           .text-italic {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            line-height: 2.5rem;
+            text-align: left;
           }
 
           .text-block {
@@ -245,40 +256,51 @@ const About = () => {
           }
 
           .inline-image {
-            height: 2rem;
-            min-width: 3rem;
-            max-width: 4rem;
-            transform: skewX(-10deg);
-            border-radius: 8px;
+            height: 2.8rem;
+            width: 10rem;
+            min-width: auto;
+            max-width: none;
+            transform: skewX(-8deg);
+            border-radius: 5px;
+            margin: 0 5px;
           }
 
-          .image-wrapper {
-            margin: 0 0.3rem;
+          .inline-image-wrapper {
+            margin: 0 2px;
           }
         }
 
         @media (max-width: 480px) {
           .about {
-            padding: 2.5rem 1.5rem;
-            margin: 1rem 0.25rem;
-            border-radius: 16px;
+            padding: 2rem 1.25rem;
+            margin: 0.5rem 0;
+            border-radius: 12px;
           }
 
           .about-content {
-            padding: 0 0.5rem;
+            padding: 0;
           }
 
           .about-header {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
           }
 
-          .section-title {
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
+          .abouts-header {
+            margin-bottom: 1.5rem;
+          }
+
+          .abouts-label {
+            font-size: 1rem;
+            letter-spacing: 1px;
+          }
+
+          .header-line {
+            flex: 0 0 80px;
           }
 
           .text-italic {
-            font-size: 1.15rem;
+            font-size: 1rem;
+            line-height: 2.2rem;
           }
 
           .text-block {
@@ -287,15 +309,15 @@ const About = () => {
           }
 
           .inline-image {
-            height: 1.6rem;
-            min-width: 2.5rem;
-            max-width: 3.5rem;
+            height: 2.5rem;
+            width: 9rem;
             transform: skewX(-8deg);
-            border-radius: 6px;
+            border-radius: 4px;
+            margin: 0 4px;
           }
 
-          .image-wrapper {
-            margin: 0 0.2rem;
+          .inline-image-wrapper {
+            margin: 0 2px;
           }
         }
 

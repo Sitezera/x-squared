@@ -181,11 +181,14 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           variants={imageVariants}
         >
           <ScaleInOnScroll delay={0} initialScale={1} threshold={1}>
-            <img
-              src="/assets/hero image.png"
-              alt="Minimalist interior with natural light"
-              className="hero-img"
-            />
+            <picture>
+              <source media="(max-width: 768px)" srcSet="/assets/heroMobile.svg" />
+              <img
+                src="/assets/hero image.png"
+                alt="Minimalist interior with natural light"
+                className="hero-img"
+              />
+            </picture>
           </ScaleInOnScroll>
         </motion.div>
 
@@ -330,58 +333,80 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
         }
 
         @media (max-width: 768px) {
+          .hero {
+            padding: 0;
+          }
+
           .hero-container {
             height: 100vh;
             min-height: 500px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
           }
 
           .hero-image-container {
-            width: 60%;
-            max-width: 400px;
+            width: 75%;
+            max-width: none;
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            margin: 0 auto;
           }
 
           .hero-text-left {
-            left: 2%;
-            top: 25%;
+            position: relative;
+            left: 10%;
+            top: auto;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 1.5rem;
           }
 
           .hero-text-right {
-            right: 3%;
-            bottom: 22%;
+            position: relative;
+            right: 10%;
+            bottom: auto;
+            text-align: right;
+            width: 100%;
+            margin-top: 1.5rem;
           }
 
           .hero-title {
-            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            white-space: normal;
           }
         }
 
         @media (max-width: 480px) {
           .hero {
-            padding: 1rem;
+            padding: 0;
           }
 
           .hero-container {
             height: 100vh;
             min-height: 450px;
+            padding: 1rem;
           }
 
           .hero-image-container {
-            width: 70%;
-            max-width: 300px;
+            width: 100%;
           }
 
           .hero-text-left {
-            left: 0;
-            top: 20%;
+            margin-bottom: 1rem;
+            left : 2% 
           }
 
           .hero-text-right {
-            right: 0;
-            bottom: 20%;
+            margin-top: 1rem;
+            right : 2%;
           }
 
           .hero-title {
-            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-size: clamp(2rem, 7vw, 3rem);
           }
 
           .scroll-indicator {

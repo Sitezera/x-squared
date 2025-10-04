@@ -211,16 +211,22 @@ const Navbar = () => {
         }
 
         .hamburger-button {
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: transform 0.3s ease;
-          z-index: 10;
-          margin: 0 -7rem;
+              background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0px 2rem;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    margin-top: 1%;
+        }
+
+        @media (max-width: 768px) {
+          .hamburger-button {
+            display: flex;
+          }
         }
 
         .hamburger-button:hover {
@@ -241,9 +247,9 @@ const Navbar = () => {
 
         .desktop-nav {
           display: flex;
-          gap: 3rem;
+          gap: 2rem;
           align-items: center;
-          margin: 0 8rem;
+          margin-left: 15rem;
         }
 
         .desktop-nav-link {
@@ -399,16 +405,25 @@ const Navbar = () => {
 
         @media (max-width: 768px) {
           .navbar {
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 1.5rem;
+          }
+
+          .nav-content {
+            padding: 0;
           }
 
           .logo-image {
-            height: 38px;
+            height: 40px;
             max-width: 140px;
           }
 
+          .hamburger-button {
+            padding: 0.25rem;
+            margin-left: auto;
+          }
+
           .hamburger-icon {
-            width: 36px;
+            width: 28px;
           }
 
           .desktop-nav {
@@ -444,16 +459,20 @@ const Navbar = () => {
 
         @media (max-width: 480px) {
           .navbar {
-            padding: 0.5rem 1rem;
+            padding: 0.875rem 1.25rem;
           }
 
           .logo-image {
-            height: 32px;
+            height: 36px;
             max-width: 120px;
           }
 
+          .hamburger-button {
+            padding: 0.25rem;
+          }
+
           .hamburger-icon {
-            width: 32px;
+            width: 26px;
           }
 
           .menu-header {

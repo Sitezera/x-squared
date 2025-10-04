@@ -1,9 +1,37 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FadeInOnScroll, SlideInFromLeft, SlideInFromRight, TextReveal, StaggerContainer, ScaleInOnScroll } from '../animations/ScrollAnimations'
 import styles from './Services.module.css'
 
 const Services = () => {
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0)
+
+  const services = [
+    {
+      icon: "/assets/service icon1.png",
+      title: "PROJECT MANAGEMENT & CONSULTATION",
+      text: "Squared offers dynamic project management and consultation services to streamline every stage of your real estate journey. From planning to delivery, we tackle complexities with strategic foresight and meticulous execution."
+    },
+    {
+      icon: "/assets/service icon2.png",
+      title: "PROJECT ENABLER",
+      text: "We take your vision and turn it into a reality. From conceptualization to execution, Squared acts as the backbone of your project, providing seamless support across legal, financial, and operational requirements."
+    },
+    {
+      icon: "/assets/service icone 3.png",
+      title: "END-TO-END PORTFOLIO MANAGEMENT",
+      text: "Squared provides comprehensive portfolio management solutions, taking the burden off your shoulders. From acquisition to asset enhancement and final divestment, we handle it all. We ensure your portfolio grows with precision, purpose, and maximum returns."
+    }
+  ]
+
+  const handlePrevService = () => {
+    setCurrentServiceIndex((prev) => (prev === 0 ? services.length - 1 : prev - 1))
+  }
+
+  const handleNextService = () => {
+    setCurrentServiceIndex((prev) => (prev === services.length - 1 ? 0 : prev + 1))
+  }
+
   return (
     <section className={styles.services} id="services">
       <div className={styles.container}>
@@ -55,96 +83,81 @@ const Services = () => {
             </SlideInFromRight>
           </div>
 
-          {/* Service Cards with 49North-style staggered animation */}
-          <StaggerContainer 
+          {/* Service Cards - Desktop Grid */}
+          <StaggerContainer
             className={styles.servicesGrid}
             staggerDelay={0.15}
             threshold={0.1}
           >
-            <div className={styles.serviceCard}>
-              <ScaleInOnScroll delay={0.2} initialScale={0.8}>
-                <motion.div
-                  className={styles.serviceIcon}
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <img src="/assets/service icon1.png" alt="Project Management" className={styles.serviceIconImg} />
-                </motion.div>
-              </ScaleInOnScroll>
-              
-              <FadeInOnScroll delay={0.4} yOffset={20}>
-                <h3 className={styles.serviceName}>
-                  PROJECT MANAGEMENT & CONSULTATION
-                </h3>
-              </FadeInOnScroll>
-              
-              <FadeInOnScroll delay={0.6} yOffset={15}>
-                <p className={styles.serviceText}>
-                  Squared offers dynamic project management and
-                  consultation services to streamline every stage of your
-                  real estate journey. From planning to delivery,
-                  we tackle complexities with strategic foresight and
-                  meticulous execution.
-                </p>
-              </FadeInOnScroll>
-            </div>
+            {services.map((service, index) => (
+              <div key={index} className={styles.serviceCard}>
+                <ScaleInOnScroll delay={0.2} initialScale={0.8}>
+                  <motion.div
+                    className={styles.serviceIcon}
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <img src={service.icon} alt={service.title} className={styles.serviceIconImg} />
+                  </motion.div>
+                </ScaleInOnScroll>
 
-            <div className={styles.serviceCard}>
-              <ScaleInOnScroll delay={0.2} initialScale={0.8}>
-                <motion.div
-                  className={styles.serviceIcon}
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <img src="/assets/service icon2.png" alt="Project Enabler" className={styles.serviceIconImg} />
-                </motion.div>
-              </ScaleInOnScroll>
-              
-              <FadeInOnScroll delay={0.4} yOffset={20}>
-                <h3 className={styles.serviceName}>
-                  PROJECT ENABLER
-                </h3>
-              </FadeInOnScroll>
-              
-              <FadeInOnScroll delay={0.6} yOffset={15}>
-                <p className={styles.serviceText}>
-                  We take your vision and turn it into a reality.
-                  From conceptualization to execution, Squared
-                  acts as the backbone of your project, providing
-                  seamless support across legal, financial, and
-                  operational requirements.
-                </p>
-              </FadeInOnScroll>
-            </div>
+                <FadeInOnScroll delay={0.4} yOffset={20}>
+                  <h3 className={styles.serviceName}>
+                    {service.title}
+                  </h3>
+                </FadeInOnScroll>
 
-            <div className={styles.serviceCard}>
-              <ScaleInOnScroll delay={0.2} initialScale={0.8}>
-                <motion.div
-                  className={styles.serviceIcon}
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <img src="/assets/service icone 3.png" alt="Portfolio Management" className={styles.serviceIconImg} />
-                </motion.div>
-              </ScaleInOnScroll>
-              
-              <FadeInOnScroll delay={0.4} yOffset={20}>
-                <h3 className={styles.serviceName}>
-                  END-TO-END PORTFOLIO MANAGEMENT
-                </h3>
-              </FadeInOnScroll>
-              
-              <FadeInOnScroll delay={0.6} yOffset={15}>
-                <p className={styles.serviceText}>
-                  Squared provides comprehensive portfolio management
-                  solutions, taking the burden off your shoulders. From
-                  acquisition to asset enhancement and final divestment,
-                  we handle it all. We ensure your portfolio grows with
-                  precision, purpose, and maximum returns.
-                </p>
-              </FadeInOnScroll>
-            </div>
+                <FadeInOnScroll delay={0.6} yOffset={15}>
+                  <p className={styles.serviceText}>
+                    {service.text}
+                  </p>
+                </FadeInOnScroll>
+              </div>
+            ))}
           </StaggerContainer>
+
+          {/* Service Cards - Mobile Carousel */}
+          <div className={styles.servicesCarousel}>
+            <div className={styles.carouselWrapper}>
+              <div
+                className={styles.carouselTrack}
+                style={{
+                  transform: `translateX(-${currentServiceIndex * 85}%)`
+                }}
+              >
+                {services.map((service, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.carouselCard} ${index === currentServiceIndex ? styles.activeCard : ''}`}
+                    onClick={() => setCurrentServiceIndex(index)}
+                  >
+                    <div className={styles.serviceIcon}>
+                      <img src={service.icon} alt={service.title} className={styles.serviceIconImg} />
+                    </div>
+                    <h3 className={styles.serviceName}>
+                      {service.title}
+                    </h3>
+                    <p className={styles.serviceText}>
+                      {service.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.carouselFade}></div>
+            </div>
+
+            {/* Carousel Indicators */}
+            <div className={styles.carouselIndicators}>
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  className={`${styles.indicator} ${index === currentServiceIndex ? styles.indicatorActive : ''}`}
+                  onClick={() => setCurrentServiceIndex(index)}
+                  aria-label={`Go to service ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

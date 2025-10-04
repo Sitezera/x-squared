@@ -149,6 +149,12 @@
     overflow: visible;
 }
 
+/* Hide mobile-only elements on desktop */
+.statementTitleMobile,
+.statementContentMobile {
+    display: none;
+}
+
 @media (max-width: 1024px) {
     .landscapeContainer {
         height: 450px;
@@ -173,82 +179,157 @@
         padding: 3rem 0;
     }
 
+    .container {
+        padding: 0 1.5rem;
+    }
+
     .statementsHeader {
-        flex-wrap: wrap;
-        gap: 1.5rem;
+        flex-direction: row;
+        margin-bottom: 2.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
     }
 
     .dividerLine {
-        width: 100%;
-        order: 2;
+        flex: 0 0 10rem;
+        margin-right: 1rem;
     }
 
     .statementsNav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 2rem;
+        left: 0;
+        top: 0;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+    }
+
+    .navItem {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .navItem.active {
+        font-size: 0.7rem;
+    }
+
+    /* Mobile-only title above image */
+    .statementTitleMobile {
+        display: block;
+        font-family: 'TheSeasonsLight', serif;
+        font-size: 3.5rem;
+        font-weight: 300;
+        font-style: italic;
+        color: #4E2520;
+        margin: 0 0 1.5rem 0;
+        line-height: 1;
+        letter-spacing: -1px;
     }
 
     .landscapeContainer {
-        height: 600px;
-        flex-direction: column;
+        height: auto;
+        position: relative;
     }
 
     .landscapeImage {
         position: relative;
         width: 100%;
-        height: 350px;
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        height: auto;
+        clip-path: none;
     }
 
+    .landscapeImg {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+    }
+
+    .landscapeImage::after {
+        display: none;
+    }
+
+    /* Hide desktop overlay on mobile */
     .statementOverlay {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        margin-top: -50px;
-        padding: 0 2rem;
-        max-width: none;
-        text-align: center;
+        display: none;
     }
 
-    .statementTitle {
-        font-size: 3rem;
+    /* Mobile content below image */
+    .statementContentMobile {
+        display: block;
+        margin-top: 1.5rem;
     }
 
-    .arrowButton {
-        margin: 0 auto;
+    .statementTextMobile {
+        color: #4E2520;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin: 0 0 1.5rem 0;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+        opacity: 0.8;
+        text-align: left;
+    }
+
+    .arrowButtonMobile {
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .arrowButtonMobile svg {
+        overflow: visible;
     }
 }
 
 @media (max-width: 480px) {
+    .statements {
+        padding: 2.5rem 0;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .statementsHeader {
+        margin-bottom: 2rem;
+    }
+
+    .sectionTitle {
+        font-size: 0.9rem;
+    }
+
+    .dividerLine {
+        flex: 0 0 8rem;
+    }
+
     .statementsNav {
-        gap: 1.5rem;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
     }
 
     .navItem {
-        font-size: 0.7rem;
+        font-size: 0.5rem;
     }
 
-    .landscapeContainer {
-        height: 500px;
+    .navItem.active {
+        font-size: 0.65rem;
     }
 
-    .landscapeImage {
-        height: 280px;
+    .statementTitleMobile {
+        font-size: 3rem;
+        margin-bottom: 1.25rem;
     }
 
-    .statementOverlay {
-        padding: 0 1.5rem;
+    .statementTextMobile {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
     }
 
-    .statementTitle {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .statementText {
-        font-size: 0.9rem;
+    .arrowButtonMobile svg {
+        width: 40px;
+        height: 30px;
     }
 }

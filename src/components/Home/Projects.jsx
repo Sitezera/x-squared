@@ -17,19 +17,19 @@ const Projects = () => {
       title: 'Kavaranahalli',
       description: 'A premium residential project spread across 4.5 and 27 acres in the scenic Nandi Hills region. Offers plotted developments and future-ready villas, crafted in phases for sustainable growth.',
       image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
-      details: 'A testament to architectural excellence and sustainable development, creating communities that thrive.'
+      details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     },
     {
       title: 'Vemgal',
       description: 'A compact plotted development near Vemgal Industrial Area. Provides well-sized plots with essential infrastructure, ideal for building homes or making smart investments.',
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-      details: 'Where modern architecture meets serene landscapes, offering an unparalleled living experience.'
+      details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     },
     {
       title: 'Manchanballe',
       description: 'A plotted residential community designed for professionals and families. Strategically located near NH44 in Chikkaballapur, it combines accessibility with lifestyle convenience.',
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-      details: 'Where modern architecture meets serene landscapes, offering an unparalleled living experience.'
+      details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     }
   ]
 
@@ -62,10 +62,11 @@ const Projects = () => {
               </p>
             </div>
 
+            {/* Desktop showcase - before image */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentProject}
-                className={styles.projectShowcase}
+                className={`${styles.projectShowcase} ${styles.projectShowcaseDesktop}`}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
@@ -104,6 +105,36 @@ const Projects = () => {
                 alt={projects[currentProject].title}
                 className={styles.projectImage}
               />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Mobile showcase - after image */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`mobile-${currentProject}`}
+              className={`${styles.projectShowcase} ${styles.projectShowcaseMobile}`}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.h1
+                className={styles.projectTitle}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                {projects[currentProject].title}
+              </motion.h1>
+
+              <motion.p
+                className={styles.projectDescription}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+              >
+                {projects[currentProject].description}
+              </motion.p>
             </motion.div>
           </AnimatePresence>
 

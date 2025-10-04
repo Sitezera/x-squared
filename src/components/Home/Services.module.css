@@ -105,7 +105,78 @@
     line-height: 1.6;
     margin: 0;
     opacity: 0.9;
-    text-align: justify;
+    text-align: left;
+}
+
+/* Carousel Styles - Hidden on Desktop */
+.servicesCarousel {
+    display: none;
+}
+
+.carouselWrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carouselTrack {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s ease;
+    padding: 0 0.5rem;
+}
+
+.carouselCard {
+    flex: 0 0 80%;
+    text-align: left;
+    opacity: 0.5;
+    filter: blur(0px);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.carouselCard.activeCard {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.carouselFade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    background: linear-gradient(to left, #4E2520, transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.carouselIndicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 243, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 243, 0.5);
+}
+
+.indicatorActive {
+    background: #FFFFF3;
+    width: 24px;
+    border-radius: 4px;
 }
 
 /* Media Queries */
@@ -130,36 +201,128 @@
 
 @media (max-width: 768px) {
     .services {
-        margin: 0 10px;
+        margin: 1rem 0;
+        border-radius: 15px;
+    }
+
+    .container {
+        padding: 0 1.5rem;
     }
 
     .servicesContent {
-        padding: 3rem 0 4rem;
+        padding: 2.5rem 0 3rem;
     }
 
     .servicesHero {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 0;
+    }
+
+    .heroContent {
+        width: 100%;
+        order: 1;
     }
 
     .servicesTitle {
         font-size: 2.5rem;
+        left: 0;
+        text-wrap: wrap;
+    }
+
+    .servicesDescription {
+        left: 0;
+        max-width: 100%;
+        font-size: 0.9rem;
+        text-align: left;
+        margin-top: 1rem;
     }
 
     .heroImage {
-        height: 280px;
-        order: -1;
+        width: 100%;
+        height: auto;
+        order: 2;
     }
 
+    .serviceHeroImg {
+        border-radius: 8px;
+    }
+
+    /* Hide desktop grid, show carousel */
     .servicesGrid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        display: none;
+    }
+
+    .servicesCarousel {
+        display: block;
+        margin-top: 1.5rem;
+    }
+
+    .carouselWrapper {
+        margin: 0 -1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .carouselTrack {
+        gap: 1.25rem;
+        padding: 0;
+    }
+
+    .carouselCard {
+        flex: 0 0 80%;
+    }
+
+    .carouselFade {
+        width: 80px;
+    }
+
+    .serviceCard {
+        text-align: left;
+    }
+
+    .serviceIcon {
+        margin-bottom: 1rem;
+    }
+
+    .serviceIconImg {
+        width: 45px;
+        height: 45px;
+    }
+
+    .serviceName {
+        font-size: 0.85rem;
+        height: auto;
+        margin-bottom: 0.75rem;
+    }
+
+    .serviceText {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    .carouselIndicators {
+        margin-top: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
+    .services {
+        border-radius: 12px;
+        margin: 0.5rem 0;
+    }
+
     .container {
-        padding: 0 1rem;
+        padding: 0 1.25rem;
+    }
+
+    .servicesContent {
+        padding: 2rem 0 2.5rem;
+    }
+
+    .servicesHero {
+        margin-bottom: 2.5rem;
     }
 
     .servicesTitle {
@@ -167,18 +330,36 @@
     }
 
     .servicesDescription {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
-    .heroImage {
-        height: 250px;
+    .carouselCard {
+        flex: 0 0 82%;
+    }
+
+    .carouselTrack {
+        gap: 1rem;
+    }
+
+    .carouselFade {
+        width: 60px;
+    }
+
+    .serviceIconImg {
+        width: 40px;
+        height: 40px;
     }
 
     .serviceName {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
     }
 
     .serviceText {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    .carouselIndicators {
+        margin-top: 1.25rem;
     }
 }
