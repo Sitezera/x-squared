@@ -45,6 +45,7 @@
 }
 
 .servicesDescription {
+    font-family: 'MontserratRegular';
     position: relative;
     left: 2rem;
     max-width: 400px;
@@ -52,7 +53,7 @@
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-    text-align: justify;
+    text-align: left;
 }
 
 .heroImage {
@@ -90,6 +91,7 @@
 }
 
 .serviceName {
+    font-family: 'MontserratRegular';
     color: #FFFFF3;
     font-size: 0.9rem;
     font-weight: 600;
@@ -100,6 +102,7 @@
 }
 
 .serviceText {
+    font-family: 'MontserratRegular';
     color: #FFFFF3;
     font-size: 0.9rem;
     line-height: 1.6;

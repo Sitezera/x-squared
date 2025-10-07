@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FadeInOnScroll, SlideInFromLeft } from '../animations/ScrollAnimations'
 import styles from './Projects.module.css'
 import slidingBtn from '/assets/slidingWhiteBtn.svg'
 
@@ -48,19 +49,26 @@ const Projects = () => {
   return (
     <section className={styles.projects} id="projects">
       <div className={styles.projectsContainer}>
-        <div className={styles.projectsHeader}>
+        <SlideInFromLeft delay={0.2} className={styles.projectsHeader}>
           <h2 className={styles.sectionLabel}>LATEST PROJECT
-            <span className={styles.headerLine}></span>
+            <motion.span
+              className={styles.headerLine}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{ transformOrigin: 'left' }}
+            />
           </h2>
-        </div>
+        </SlideInFromLeft>
 
-        <div className={styles.projectsContent}>
+        <FadeInOnScroll delay={0.3} duration={1} yOffset={50} className={styles.projectsContent}>
           <div className={styles.projectInfo}>
-            <div className={styles.projectIntroContainer}>
+            <FadeInOnScroll delay={0.5} yOffset={30} className={styles.projectIntroContainer}>
               <p className={styles.projectIntro}>
                 {projects[currentProject].details}
               </p>
-            </div>
+            </FadeInOnScroll>
 
             {/* Desktop showcase - before image */}
             <AnimatePresence mode="wait">
@@ -99,6 +107,7 @@ const Projects = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.7 }}
+              whileHover={{ scale: 1.02 }}
             >
               <img
                 src={projects[currentProject].image}
@@ -138,33 +147,42 @@ const Projects = () => {
             </motion.div>
           </AnimatePresence>
 
-          <button
+          <motion.button
             className={`${styles.navArrow} ${styles.navPrev}`}
             onClick={prevProject}
             aria-label="Previous project"
+            whileHover={{ scale: 1.15, x: -5 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             <img className={styles.slidingButton} src={slidingBtn} alt="sliding button" />
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             className={`${styles.navArrow} ${styles.navNext}`}
             onClick={nextProject}
             aria-label="Next project"
+            whileHover={{ scale: 1.15, x: 5 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             <img className={`${styles.slidingButton} ${styles.slidingBtnRight}`} src={slidingBtn} alt="sliding button" />
-          </button>
+          </motion.button>
 
-          <div className={styles.projectDots}>
+          <FadeInOnScroll delay={0.7} yOffset={20} className={styles.projectDots}>
             {projects.map((_, index) => (
-              <button
+              <motion.button
                 key={index}
                 className={`${styles.dot} ${index === currentProject ? styles.dotActive : ''}`}
                 onClick={() => goToProject(index)}
                 aria-label={`Go to project ${index + 1}`}
+                whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400 }}
               />
             ))}
-          </div>
-        </div>
+          </FadeInOnScroll>
+        </FadeInOnScroll>
       </div>
     </section>
   )

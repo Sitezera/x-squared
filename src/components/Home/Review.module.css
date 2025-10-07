@@ -17,8 +17,9 @@
 }
 
 .sectionTitle {
+    font-family: 'MontserratRegular';
     color: #F3793C;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 2px;
     margin: 0 0 1rem 0;
@@ -52,6 +53,7 @@
 }
 
 .navArrow {
+    font-family: 'MontserratRegular';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -119,6 +121,7 @@
 }
 
 .quoteText {
+    font-family: 'MontserratRegular';
     color: #4E2520;
     font-size: 1.1rem;
     line-height: 1.6;

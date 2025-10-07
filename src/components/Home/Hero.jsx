@@ -198,7 +198,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           variants={rightTextVariants}
         >
           <TextReveal 
-            text="Takes Shape" 
+            text="Take Shape" 
             className="hero-title"
             delay={isFirstLoad ? 2.1 : 0.3} // Wait for slide to complete
             staggerDelay={0.1}

@@ -214,7 +214,7 @@ const Navbar = () => {
               background: none;
     border: none;
     cursor: pointer;
-    padding: 0px 2rem;
+    padding: 0px 1rem;
     display: block;
     align-items: center;
     justify-content: center;
@@ -249,10 +249,11 @@ const Navbar = () => {
           display: flex;
           gap: 2rem;
           align-items: center;
-          margin-left: 15rem;
+          margin-left: 13rem;
         }
 
         .desktop-nav-link {
+          font-family: 'MontserratRegular';
           text-decoration: none;
           color: #4E2520;
           font-size: 0.9rem;

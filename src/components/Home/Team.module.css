@@ -17,8 +17,9 @@
 }
 
 .teams-label {
+  font-family: 'MontserratRegular';
   color: #F3793C;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   display: inline-block;
   position: relative;
@@ -36,6 +37,7 @@
 }
 
 .team-description {
+  font-family: 'MontserratRegular';
   font-size: 1rem;
   line-height: 1.6;
   text-align: left;
@@ -145,6 +147,7 @@
 }
 
 .member-title {
+  font-family: 'MontserratRegular';
   font-size: 1.1rem;
   color: #F3793C;
   margin: 0;

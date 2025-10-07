@@ -55,15 +55,27 @@ const About = () => {
                 <React.Fragment key={index}>
                   <span className="text-segment">{segment.text}</span>
                   {segment.image && (
-                    <ScaleInOnScroll 
+                    <ScaleInOnScroll
                       delay={0.3 + (index * 0.1)}
                       initialScale={0.7}
                       className="inline-image-wrapper"
                     >
-                      <img 
-                        src={segment.image} 
-                        alt={`About illustration ${index + 1}`} 
-                        className="inline-image" 
+                      <motion.img
+                        src={segment.image}
+                        alt={`About illustration ${index + 1}`}
+                        className="inline-image"
+                        whileHover={{
+                          scale: 1.2,
+                          rotateZ: 0,
+                          zIndex: 100,
+                          y: -10,
+                          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 260,
+                          damping: 20
+                        }}
                       />
                     </ScaleInOnScroll>
                   )}
@@ -104,9 +116,10 @@ const About = () => {
           
         }
         .abouts-label {
+          font-family: 'MontserratRegular';
           color: #FFFFF3;
-          font-size: 2rem;
-          font-weight: 500;
+          font-size: 1.4rem;
+          font-weight: 600;
           letter-spacing: 2px;
           margin: 0;
           white-space: nowrap;
@@ -117,7 +130,7 @@ const About = () => {
           background: #FFFFF3;
         }
         .section-title {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+          font-family: 'MontserratRegular';
           font-size: 0px;
           color: #FFFFF3;
           margin: 0;
@@ -142,7 +155,7 @@ const About = () => {
           font-style: italic;
           font-size: 1.8rem;
           line-height: 4rem;
-          text-align: justify;
+          text-align: left;
           margin: 0;
         }
 
@@ -171,12 +184,9 @@ const About = () => {
           display: inline-block;
           vertical-align: middle;
           transform: skewX(-12deg);
-          transition: all 0.3s ease;
-        }
-
-        .inline-image:hover {
-          transform: skewX(-12deg) scale(1.05);
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+          cursor: pointer;
+          position: relative;
+          will-change: transform;
         }
 
         /* Enhanced animation classes for continuous paragraph */
@@ -189,6 +199,12 @@ const About = () => {
           vertical-align: middle;
           margin: 0 3px;
           line-height: 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        .inline-image-wrapper:hover {
+          z-index: 100;
         }
 
         .header-line {
@@ -263,6 +279,7 @@ const About = () => {
             transform: skewX(-8deg);
             border-radius: 5px;
             margin: 0 5px;
+            cursor: pointer;
           }
 
           .inline-image-wrapper {
@@ -314,6 +331,7 @@ const About = () => {
             transform: skewX(-8deg);
             border-radius: 4px;
             margin: 0 4px;
+            cursor: pointer;
           }
 
           .inline-image-wrapper {

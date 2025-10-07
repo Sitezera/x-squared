@@ -309,6 +309,7 @@ const Footer = () => {
         .form-input,
         .form-select,
         .form-textarea {
+          font-family: 'MontserratRegular';
           padding: 0.875rem 1rem;
           border: 1px solid rgba(78, 37, 32, 0.2);
           border-radius: 24px;
@@ -338,7 +339,7 @@ const Footer = () => {
         .form-textarea {
           resize: vertical;
           min-height: 100px;
-          font-family: inherit;
+          font-family: 'MontserratRegular';
         }
 
         .form-input:focus,
