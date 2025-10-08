@@ -1,217 +1,212 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
+import { TextReveal, ScaleInOnScroll } from '../animations/ScrollAnimations'
+import { useSmoothScroll } from '../../hooks/useScrollAnimations'
 
-const Hero = () => {
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [touchStartY, setTouchStartY] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const sectionRef = useRef(null)
+const Hero = ({ isLoading = false, isFirstLoad = false }) => {
+  // Enable smooth scrolling like 49North
+  useSmoothScroll();
 
-  // Initial loading animation trigger
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 100) // Small delay to ensure smooth start
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    const handleWheel = (e) => {
-      if (isExpanded && e.deltaY < 0 && window.scrollY <= 5) {
-        setIsExpanded(false)
-        e.preventDefault()
-      } else if (!isExpanded) {
-        e.preventDefault()
-        const scrollDelta = e.deltaY * 0.001
-        const newProgress = Math.min(Math.max(scrollProgress + scrollDelta, 0), 1)
-        setScrollProgress(newProgress)
-
-        if (newProgress >= 1) {
-          setIsExpanded(true)
-        }
+  // Animation variants for text tiles sliding like the orange boxes
+  const leftTextVariants = {
+    hidden: { 
+      opacity: 1,
+      x: '-100%', // Start off-screen left (same as orange boxes)
+      y: 0,
+      scale: 1
+    },
+    sliding: {
+      opacity: 1,
+      x: '50vw', // Slide across screen like orange boxes, but stop at center area
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: isFirstLoad ? 1.1 : 0.8, // Match orange box duration
+        delay: isFirstLoad ? 0.5 : 0.2, // Start with orange boxes
+        ease: [0.76, 0, 0.24, 1], // Same easing as orange boxes
       }
-    }
-
-    const handleTouchStart = (e) => {
-      setTouchStartY(e.touches[0].clientY)
-    }
-
-    const handleTouchMove = (e) => {
-      if (!touchStartY) return
-
-      const touchY = e.touches[0].clientY
-      const deltaY = touchStartY - touchY
-
-      if (isExpanded && deltaY < -20 && window.scrollY <= 5) {
-        setIsExpanded(false)
-        e.preventDefault()
-      } else if (!isExpanded) {
-        e.preventDefault()
-        const scrollFactor = deltaY < 0 ? 0.008 : 0.005
-        const scrollDelta = deltaY * scrollFactor
-        const newProgress = Math.min(Math.max(scrollProgress + scrollDelta, 0), 1)
-        setScrollProgress(newProgress)
-
-        if (newProgress >= 1) {
-          setIsExpanded(true)
-        }
-
-        setTouchStartY(touchY)
+    },
+    visible: { 
+      opacity: 1,
+      x: 0, // Settle to final position
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        delay: isFirstLoad ? 1.8 : 1.0, // After sliding motion completes
+        ease: [0.25, 0.1, 0.25, 1],
       }
+    },
+    immediate: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.1 }
     }
+  };
 
-    const handleTouchEnd = () => {
-      setTouchStartY(0)
-    }
-
-    const handleScroll = () => {
-      if (!isExpanded) {
-        window.scrollTo(0, 0)
+  const rightTextVariants = {
+    hidden: { 
+      opacity: 1,
+      x: '100%', // Start off-screen right (same as orange boxes)
+      y: 0,
+      scale: 1
+    },
+    sliding: {
+      opacity: 1,
+      x: '-50vw', // Slide across screen like orange boxes, but stop at center area
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: isFirstLoad ? 1.1 : 0.8, // Match orange box duration
+        delay: isFirstLoad ? 0.62 : 0.32, // Staggered like orange boxes
+        ease: [0.76, 0, 0.24, 1], // Same easing as orange boxes
       }
+    },
+    visible: { 
+      opacity: 1,
+      x: 0, // Settle to final position
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        delay: isFirstLoad ? 1.9 : 1.1, // After sliding motion completes
+        ease: [0.25, 0.1, 0.25, 1],
+      }
+    },
+    immediate: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.1 }
     }
+  };
 
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('touchstart', handleTouchStart, { passive: false })
-    window.addEventListener('touchmove', handleTouchMove, { passive: false })
-    window.addEventListener('touchend', handleTouchEnd)
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('touchstart', handleTouchStart)
-      window.removeEventListener('touchmove', handleTouchMove)
-      window.removeEventListener('touchend', handleTouchEnd)
+  const imageVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.1, // Start very small
+      y: 0,
+      rotate: 0
+    },
+    sliding: {
+      opacity: 0, 
+      scale: 0.1, // Stay hidden during sliding phase
+      y: 0,
+      rotate: 0,
+      transition: { duration: 0.1 }
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      rotate: 0,
+      transition: {
+        duration: isFirstLoad ? 1.6 : 1.0,
+        delay: isFirstLoad ? 0.8 : 0.3, // After text tiles have settled
+        ease: [0.25, 0.1, 0.25, 1],
+        type: "spring",
+        stiffness: 150,
+        damping: 25
+      }
+    },
+    immediate: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      rotate: 0,
+      transition: { duration: 0.1 }
     }
-  }, [scrollProgress, isExpanded, touchStartY])
+  };
 
-  // Calculate dynamic sizes and positions based on scroll progress
-  const imageScale = 1 + scrollProgress * 0.5 // Scales from 1 to 1.5 (reduced from 2.8)
-  const leftTextTranslate = scrollProgress * -200 // Moves left text further left
-  const rightTextTranslate = scrollProgress * 200 // Moves right text further right
-  const textOpacity = Math.max(0.3, 1 - scrollProgress * 0.7) // Fade out text slightly
+  const containerVariants = {
+    hidden: {},
+    sliding: {
+      transition: {
+        staggerChildren: 0, // No stagger - each element has its own timing
+        delayChildren: 0
+      }
+    },
+    visible: {
+      transition: {
+        staggerChildren: 0, // No stagger - each element has its own timing
+        delayChildren: 0
+      }
+    },
+    immediate: {
+      transition: { staggerChildren: 0, delayChildren: 0 }
+    }
+  };
+
+  // Multi-stage animation sequence for first load
+  const [animationStage, setAnimationStage] = React.useState(isFirstLoad ? "hidden" : "immediate");
+
+  React.useEffect(() => {
+    if (isFirstLoad) {
+      // Stage 1: hidden → sliding (with orange boxes)
+      setTimeout(() => setAnimationStage("sliding"), 500);
+      // Stage 2: sliding → visible (settle into place)
+      setTimeout(() => setAnimationStage("visible"), 1800);
+    }
+  }, [isFirstLoad]);
+
+  const animationState = !isFirstLoad ? "immediate" : animationStage;
 
   return (
-    <motion.section
-      className="hero"
-      id="home"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <div className="hero-container" ref={sectionRef}>
-        {/* Left text - "Where Ideas" */}
+    <section className="hero" id="home">
+      <motion.div 
+        className="hero-container"
+        initial="hidden"
+        animate={animationState}
+        variants={containerVariants}
+      >
+        {/* Left text - "Where Ideas" sliding from behind orange boxes */}
         <motion.div
           className="hero-text-left"
-          initial={{ x: -200, opacity: 0 }}
-          animate={isLoaded ? { x: 0, opacity: 1 } : { x: -200, opacity: 0 }}
-          transition={{
-            duration: 1.2,
-            delay: 0.5,
-            ease: [0.25, 0.25, 0.25, 0.75]
-          }}
-          style={{
-            transform: `translateX(${leftTextTranslate}px)`,
-            opacity: isLoaded ? textOpacity : 0
-          }}
+          variants={leftTextVariants}
         >
-          <motion.h1
+          <TextReveal 
+            text="Where Ideas" 
             className="hero-title"
-            initial={{ y: 30, opacity: 0 }}
-            animate={isLoaded ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-          >
-            Where Ideas
-          </motion.h1>
+            delay={isFirstLoad ? 2.0 : 0.1} // Wait for slide to complete
+            staggerDelay={0.1}
+          />
         </motion.div>
 
-        {/* Center image */}
+        {/* Center image with scaling animation */}
         <motion.div
           className="hero-image-container"
-          initial={{ scale: 0.3, opacity: 0, y: 50 }}
-          animate={isLoaded ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.3, opacity: 0, y: 50 }}
-          transition={{
-            duration: 1.4,
-            delay: 0.2,
-            ease: [0.25, 0.25, 0.25, 0.75]
-          }}
-          style={{
-            transform: `scale(${imageScale}) translateY(${isLoaded ? 0 : 50}px)`,
-            zIndex: 1
-          }}
+          variants={imageVariants}
         >
-          <motion.img
-            src="/assets/hero image.png"
-            alt="Minimalist interior with natural light"
-            className="hero-img"
-            initial={{ scale: 1.2, filter: "blur(10px)" }}
-            animate={isLoaded ? { scale: 1, filter: "blur(0px)" } : { scale: 1.2, filter: "blur(10px)" }}
-            transition={{ duration: 1.6, delay: 0.8 }}
-          />
-
-          {/* Overlay that fades out as image expands */}
-          <motion.div
-            className="image-overlay"
-            initial={{ opacity: 0.8 }}
-            animate={isLoaded ? { opacity: Math.max(0, 0.2 - scrollProgress * 0.2) } : { opacity: 0.8 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            style={{
-              opacity: isLoaded ? Math.max(0, 0.2 - scrollProgress * 0.2) : 0.8
-            }}
-          />
+          <ScaleInOnScroll delay={0} initialScale={1} threshold={1}>
+            <picture>
+              <source media="(max-width: 768px)" srcSet="/assets/heroMobile.svg" />
+              <img
+                src="/assets/hero image.png"
+                alt="Minimalist interior with natural light"
+                className="hero-img"
+              />
+            </picture>
+          </ScaleInOnScroll>
         </motion.div>
 
-        {/* Right text - "Takes Shape" */}
+        {/* Right text - "Takes Shape" sliding from behind orange boxes */}
         <motion.div
           className="hero-text-right"
-          initial={{ x: 200, opacity: 0 }}
-          animate={isLoaded ? { x: 0, opacity: 1 } : { x: 200, opacity: 0 }}
-          transition={{
-            duration: 1.2,
-            delay: 0.7,
-            ease: [0.25, 0.25, 0.25, 0.75]
-          }}
-          style={{
-            transform: `translateX(${rightTextTranslate}px)`,
-            opacity: isLoaded ? textOpacity : 0
-          }}
+          variants={rightTextVariants}
         >
-          <motion.h1
+          <TextReveal 
+            text="Take Shape" 
             className="hero-title"
-            initial={{ y: 30, opacity: 0 }}
-            animate={isLoaded ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-          >
-            Takes Shape
-          </motion.h1>
+            delay={isFirstLoad ? 2.1 : 0.3} // Wait for slide to complete
+            staggerDelay={0.1}
+          />
         </motion.div>
 
-        {/* Scroll indicator */}
-        {!isExpanded && (
-          <motion.div
-            className="scroll-indicator"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: isLoaded && scrollProgress < 0.1 ? 1 : 0,
-              y: isLoaded ? 0 : 20
-            }}
-            transition={{
-              duration: 0.6,
-              delay: isLoaded ? 2.0 : 0,
-              ease: "easeOut"
-            }}
-          >
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={isLoaded ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.4, delay: 2.2 }}
-            >
-              Scroll to explore
-            </motion.p>
-          </motion.div>
-        )}
-      </div>
+        
+      </motion.div>
 
       <style jsx>{`
         .hero {
@@ -239,8 +234,8 @@ const Hero = () => {
 
         .hero-image-container {
           position: relative;
-          width: 40%;
-          max-width: 550px;
+          width: 45%;
+          max-width: 45%;
           height: auto;
           z-index: 1;
           border-radius: 0;
@@ -256,14 +251,7 @@ const Hero = () => {
           object-fit: cover;
         }
 
-        .image-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.1);
-          border-radius: 0;
-          pointer-events: none;
-        }
-
+        
         .hero-text-left {
           position: absolute;
           left: 8%;
@@ -274,14 +262,14 @@ const Hero = () => {
 
         .hero-text-right {
           position: absolute;
-          right: 12%;
+          right: 11%;
           bottom: 25%;
           z-index: 30;
           transition: transform 0.1s ease-out, opacity 0.1s ease-out;
         }
 
         .hero-title {
-          font-family: 'Times New Roman', Georgia, serif;
+          font-family: 'TheSeasonsLight', Georgia, serif;
           font-size: clamp(3rem, 6vw, 5.5rem);
           font-weight: 300;
           font-style: italic;
@@ -302,16 +290,25 @@ const Hero = () => {
           font-size: 1rem;
           font-style: italic;
           text-align: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+          transform: translateX(-50%) translateY(-5px);
+          opacity: 0.8;
         }
 
         .scroll-indicator p {
           margin: 0;
-          animation: pulse 2s infinite;
+          animation: fadeInOut 3s infinite;
+          font-family: 'Times New Roman', Georgia, serif;
+          font-weight: 300;
         }
 
-        @keyframes pulse {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 1; }
+        @keyframes fadeInOut {
+          0%, 100% { opacity: 0.4; transform: translateY(0px); }
+          50% { opacity: 1; transform: translateY(-3px); }
         }
 
         /* Responsive adjustments */
@@ -326,7 +323,7 @@ const Hero = () => {
           }
 
           .hero-text-right {
-            right: 8%;
+            right: 1%;
             bottom: 28%;
           }
 
@@ -336,58 +333,80 @@ const Hero = () => {
         }
 
         @media (max-width: 768px) {
+          .hero {
+            padding: 0;
+          }
+
           .hero-container {
             height: 100vh;
             min-height: 500px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
           }
 
           .hero-image-container {
-            width: 60%;
-            max-width: 400px;
+            width: 75%;
+            max-width: none;
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            margin: 0 auto;
           }
 
           .hero-text-left {
-            left: 2%;
-            top: 25%;
+            position: relative;
+            left: 10%;
+            top: auto;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 1.5rem;
           }
 
           .hero-text-right {
-            right: 3%;
-            bottom: 22%;
+            position: relative;
+            right: 10%;
+            bottom: auto;
+            text-align: right;
+            width: 100%;
+            margin-top: 1.5rem;
           }
 
           .hero-title {
-            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            white-space: normal;
           }
         }
 
         @media (max-width: 480px) {
           .hero {
-            padding: 1rem;
+            padding: 0;
           }
 
           .hero-container {
             height: 100vh;
             min-height: 450px;
+            padding: 1rem;
           }
 
           .hero-image-container {
-            width: 70%;
-            max-width: 300px;
+            width: 100%;
           }
 
           .hero-text-left {
-            left: 0;
-            top: 20%;
+            margin-bottom: 1rem;
+            left : 2% 
           }
 
           .hero-text-right {
-            right: 0;
-            bottom: 20%;
+            margin-top: 1rem;
+            right : 2%;
           }
 
           .hero-title {
-            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-size: clamp(2rem, 7vw, 3rem);
           }
 
           .scroll-indicator {
@@ -404,7 +423,7 @@ const Hero = () => {
           -ms-user-select: none;
         }
       `}</style>
-    </motion.section>
+    </section>
   )
 }
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { FadeInOnScroll, SlideInFromLeft, ScaleInOnScroll } from '../animations/ScrollAnimations'
 import styles from './Statements.module.css'
 import img from '/assets/statements.png'
+import arrowIcon from '/assets/arrowStatments.svg'
 
 const Statements = () => {
   const [activeTab, setActiveTab] = useState('PURPOSE')
@@ -31,72 +33,129 @@ const Statements = () => {
   return (
     <section className={styles.statements} id="statements">
       <div className={styles.container}>
-        <div className={styles.statementsHeader}>
-          <h2 className={styles.sectionTitle}>STATEMENTS</h2>
-          <div className={styles.dividerLine}></div>
-          <div className={styles.statementsNav}>
-            {Object.keys(statements).map((key) => (
-              <button
+        <SlideInFromLeft delay={0.2} className={styles.statementsHeader}>
+          <FadeInOnScroll delay={0.3} yOffset={20}>
+            <h2 className={styles.sectionTitle}>STATEMENTS</h2>
+          </FadeInOnScroll>
+          <motion.div
+            className={styles.dividerLine}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ transformOrigin: 'left' }}
+          />
+          <FadeInOnScroll delay={0.6} yOffset={15} className={styles.statementsNav}>
+            {Object.keys(statements).map((key, index) => (
+              <motion.button
                 key={key}
                 className={`${styles.navItem} ${activeTab === key ? styles.active : ''}`}
                 onClick={() => setActiveTab(key)}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.7 + (index * 0.1) }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {key}
-              </button>
+              </motion.button>
             ))}
-          </div>
-        </div>
+          </FadeInOnScroll>
+        </SlideInFromLeft>
 
         <div className={styles.statementsContent}>
-          <motion.div
-            className={styles.landscapeContainer}
+          {/* Mobile Title - Shows above image on mobile */}
+          <motion.h3
+            className={styles.statementTitleMobile}
+            key={`${activeTab}-mobile`}
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className={styles.landscapeImage}>
-              <img 
-                src={img} 
-                alt="Mountain landscape with mist"
-                className={styles.landscapeImg}
-              />
-            </div>
-            
-            <div className={styles.statementOverlay}>
-              <motion.h3
-                className={styles.statementTitle}
-                key={activeTab}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-              >
-                {statements[activeTab].title}
-              </motion.h3>
-              
-              <motion.p
-                className={styles.statementText}
-                key={`${activeTab}-text`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {statements[activeTab].content}
-              </motion.p>
-              
+            {statements[activeTab].title}
+          </motion.h3>
+
+          <ScaleInOnScroll delay={0.3} duration={1} initialScale={0.95}>
+            <motion.div
+              className={styles.landscapeContainer}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
               <motion.div
-                className={styles.arrowButton}
-                whileHover={{ x: 10 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={nextStatement}
+                className={styles.landscapeImage}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <svg width="50" height="2" viewBox="0 0 50 2" fill="none">
-                  <line x1="0" y1="1" x2="45" y2="1" stroke="#4E2520" strokeWidth="1"/>
-                  <path d="M45 1L50 1M50 1L45 -2M50 1L45 4" stroke="#4E2520" strokeWidth="1"/>
-                </svg>
+                <picture>
+                  <source media="(max-width: 768px)" srcSet="/assets/statmentMobile.svg" />
+                  <img
+                    src={img}
+                    alt="Mountain landscape with mist"
+                    className={styles.landscapeImg}
+                  />
+                </picture>
               </motion.div>
-            </div>
-          </motion.div>
+
+              <div className={styles.statementOverlay}>
+                <motion.h3
+                  className={styles.statementTitle}
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  {statements[activeTab].title}
+                </motion.h3>
+
+                <motion.p
+                  className={styles.statementText}
+                  key={`${activeTab}-text`}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  {statements[activeTab].content}
+                </motion.p>
+
+                <motion.div
+                  className={styles.arrowButton}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  whileHover={{ x: 10, scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={nextStatement}
+                >
+                  <img src={arrowIcon} alt="Next" />
+                </motion.div>
+              </div>
+            </motion.div>
+          </ScaleInOnScroll>
+
+          {/* Mobile Content - Shows below image on mobile */}
+          <div className={styles.statementContentMobile}>
+            <motion.p
+              className={styles.statementTextMobile}
+              key={`${activeTab}-text-mobile`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {statements[activeTab].content}
+            </motion.p>
+
+            <motion.div
+              className={styles.arrowButtonMobile}
+              whileHover={{ x: 10 }}
+              whileTap={{ scale: 0.75 }}
+              onClick={nextStatement}
+            >
+              <img src={arrowIcon} alt="Next" />
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
