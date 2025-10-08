@@ -102,10 +102,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg,
-            rgba(243, 121, 60, 0.05) 0%,
-            transparent 40%,
-            rgba(78, 37, 32, 0.1) 100%);
+    background: transparent;
     pointer-events: none;
 }
 
@@ -149,8 +146,9 @@
     transition: all 0.3s ease;
 }
 
-.arrowButton svg {
-    overflow: visible;
+.arrowButton img {
+    width: 4rem;
+    height: auto;
 }
 
 /* Hide mobile-only elements on desktop */
@@ -282,8 +280,9 @@
         transition: all 0.3s ease;
     }
 
-    .arrowButtonMobile svg {
-        overflow: visible;
+    .arrowButtonMobile img {
+        width: 3rem;
+        height: auto;
     }
 }
 

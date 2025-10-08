@@ -65,16 +65,16 @@ const About = () => {
                         alt={`About illustration ${index + 1}`}
                         className="inline-image"
                         whileHover={{
-                          scale: 1.2,
-                          rotateZ: 0,
-                          zIndex: 100,
-                          y: -10,
-                          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)"
+                          scale: 2.8,
+                          skewX: 0,
+                          y: -15,
+                          zIndex: 1000,
+                          boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5)"
                         }}
                         transition={{
                           type: "spring",
-                          stiffness: 260,
-                          damping: 20
+                          stiffness: 300,
+                          damping: 25
                         }}
                       />
                     </ScaleInOnScroll>
@@ -91,7 +91,7 @@ const About = () => {
           background : #F3793C;
           padding: 6% 0 6% 0 ;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
           border-radius: 20px;
           margin: 2rem 0rem;
         }
@@ -184,6 +184,7 @@ const About = () => {
           display: inline-block;
           vertical-align: middle;
           transform: skewX(-12deg);
+          transform-origin: center center;
           cursor: pointer;
           position: relative;
           will-change: transform;
@@ -201,10 +202,11 @@ const About = () => {
           line-height: 0;
           position: relative;
           z-index: 1;
+          overflow: visible;
         }
 
         .inline-image-wrapper:hover {
-          z-index: 100;
+          z-index: 1000;
         }
 
         .header-line {

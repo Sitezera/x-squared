@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FadeInOnScroll, SlideInFromLeft, ScaleInOnScroll } from '../animations/ScrollAnimations'
 import styles from './Statements.module.css'
 import img from '/assets/statements.png'
+import arrowIcon from '/assets/arrowStatments.svg'
 
 const Statements = () => {
   const [activeTab, setActiveTab] = useState('PURPOSE')
@@ -128,10 +129,7 @@ const Statements = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={nextStatement}
                 >
-                  <svg width="50" height="40" viewBox="0 0 50 2" fill="none">
-                    <line x1="0" y1="1" x2="45" y2="1" stroke="#4E2520" strokeWidth="1"/>
-                    <path d="M45 1L50 1M50 1L45 -2M50 1L45 4" stroke="#4E2520" strokeWidth="1"/>
-                  </svg>
+                  <img src={arrowIcon} alt="Next" />
                 </motion.div>
               </div>
             </motion.div>
@@ -152,13 +150,10 @@ const Statements = () => {
             <motion.div
               className={styles.arrowButtonMobile}
               whileHover={{ x: 10 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.75 }}
               onClick={nextStatement}
             >
-              <svg width="50" height="40" viewBox="0 0 50 2" fill="none">
-                <line x1="0" y1="1" x2="45" y2="1" stroke="#4E2520" strokeWidth="1"/>
-                <path d="M45 1L50 1M50 1L45 -2M50 1L45 4" stroke="#4E2520" strokeWidth="1"/>
-              </svg>
+              <img src={arrowIcon} alt="Next" />
             </motion.div>
           </div>
         </div>
