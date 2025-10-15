@@ -125,8 +125,16 @@
 .carouselTrack {
     display: flex;
     gap: 1.5rem;
-    transition: transform 0.5s ease;
     padding: 0 0.5rem;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.carouselTrack:active {
+    cursor: grabbing;
 }
 
 .carouselCard {
@@ -136,6 +144,8 @@
     filter: blur(0px);
     transition: all 0.5s ease;
     cursor: pointer;
+    pointer-events: auto;
+    touch-action: pan-y;
 }
 
 .carouselCard.activeCard {
@@ -268,12 +278,14 @@
     }
 
     .carouselTrack {
-        gap: 1.25rem;
+        gap: 0;
         padding: 0;
+        will-change: transform;
     }
 
     .carouselCard {
-        flex: 0 0 80%;
+        flex: 0 0 100%;
+        min-width: 100%;
     }
 
     .carouselFade {
@@ -337,11 +349,13 @@
     }
 
     .carouselCard {
-        flex: 0 0 82%;
+        flex: 0 0 100%;
+        min-width: 100%;
     }
 
     .carouselTrack {
-        gap: 1rem;
+        gap: 0;
+        will-change: transform;
     }
 
     .carouselFade {
