@@ -85,7 +85,7 @@ const Footer = () => {
                 </div>
               )}
 
-              <div className="form-row">
+              <div className="form-row name-email-row">
                 <input
                   type="text"
                   name="name"
@@ -108,24 +108,31 @@ const Footer = () => {
                 />
               </div>
               
-              <div className="form-row">
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
-                  className="form-select"
-                  required
-                  disabled={isSubmitting}
-                >
-                  <option value="">Select Type of Services</option>
-                  <option value="project-management">Project Management</option>
-                  <option value="consultation">Consultation</option>
-                  <option value="portfolio">Portfolio Management</option>
-                  <option value="enabler">Project Enabler</option>
-                </select>
+              <div className="form-row select-row">
+                <div className="select-container">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleInputChange}
+                    className="form-select"
+                    required
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select Type of Services</option>
+                    <option value="project-management">Project Management</option>
+                    <option value="consultation">Consultation</option>
+                    <option value="portfolio">Portfolio Management</option>
+                    <option value="enabler">Project Enabler</option>
+                  </select>
+                  <img 
+                    src="/assets/Layer 40.svg" 
+                    alt="Layer 40.svg" 
+                    className="select-icon"
+                  />
+                </div>
               </div>
               
-              <div className="form-row">
+              <div className="form-row textarea-row">
                 <textarea
                   name="message"
                   placeholder="Type Your Message"
@@ -254,10 +261,13 @@ const Footer = () => {
         }
 
         .section-title {
+          font-family: 'MontserratBold';
           font-size: 2.5rem;
           color: #4E2520;
           margin: 0 0 1rem 0;
-          font-weight: 500;
+          font-weight: 800;
+          letter-spacing: -0.5px;
+          line-height: 1.2;
         }
 
         .section-subtitle {
@@ -299,57 +309,92 @@ const Footer = () => {
           margin-bottom: 1rem;
         }
 
-        .form-row:nth-child(2),
-        .form-row:nth-child(3) {
+        .select-row,
+        .textarea-row {
           grid-template-columns: 1fr;
+        }
+
+        .name-email-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .select-container {
+          position: relative;
+          width: 100%;
+        }
+
+        .select-icon {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%) rotate(270deg);
+          pointer-events: none;
+          width: 2rem;
+          height: 2rem;
         }
 
         .form-input,
         .form-select,
         .form-textarea {
           font-family: 'MontserratRegular';
-          padding: 0.875rem 1rem;
-          border: 1px solid rgba(78, 37, 32, 0.2);
+          padding: 0.625rem 1rem;
+          border: 2px solid rgba(78, 37, 32, 0.3);
           border-radius: 24px;
-          background: #FFFFFF;
+          background: #FFFFF3;
           color: #4E2520;
           font-size: 0.9rem;
           transition: all 0.3s ease;
           outline: none;
           width: 100%;
+          box-sizing: border-box;
         }
 
-        .form-input::placeholder,
-        .form-select,
+        .form-input::placeholder {
+          color: #4E2520;
+          font-family: 'MontserratRegular';
+          font-weight: normal;
+        }
+
+        .form-select {
+          color: #4E2520;
+          font-family: 'MontserratRegular';
+          font-weight: normal;
+        }
+
         .form-textarea::placeholder {
-          color: rgba(78, 37, 32, 0.5);
+          color: #4E2520;
+          font-family: 'MontserratRegular';
+          font-weight: normal;
         }
 
         .form-select {
           appearance: none;
-          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F3793C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-          background-repeat: no-repeat;
-          background-position: right 1rem center;
-          background-size: 1.2rem;
           padding-right: 2.5rem;
         }
 
         .form-textarea {
           resize: vertical;
-          min-height: 100px;
+          min-height: 2.8rem;
+          max-height: 2.8rem;
+          height: 2.8rem;
           font-family: 'MontserratRegular';
+          background: #FFFFF3;
+          padding: 0.625rem 1rem;
+          overflow-y: auto;
+          border: 2px solid rgba(78, 37, 32, 0.3);
+          border-radius: 24px;
         }
 
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
           border-color: #F3793C;
-          background: #FFFFFF;
+          background: #FFFFF3;
         }
 
         .submit-button {
           background: #4E2520;
-          color: #FFFFFF;
+          color: #F3793C;
           padding: 0.875rem 2.5rem;
           border: none;
           border-radius: 24px;
@@ -384,11 +429,14 @@ const Footer = () => {
         }
 
         .column-title {
+          font-family: 'MontserratBold';
           color: #4E2520;
-          font-size: 0.875rem;
-          font-weight: 600;
-          letter-spacing: 1.5px;
+          font-size: 1rem;
+          font-weight: 900;
+          letter-spacing: 1.2px;
           margin: 0 0 1.5rem 0;
+          line-height: 1.2;
+          padding-top: 0.5rem;
         }
 
         .link-list {
@@ -404,7 +452,7 @@ const Footer = () => {
         .link-list a {
           color: #4E2520;
           text-decoration: none;
-          font-size: 0.9rem;
+          font-size: 1.2rem;
           opacity: 0.7;
           transition: all 0.3s ease;
         }
@@ -426,6 +474,7 @@ const Footer = () => {
           display: flex;
           align-items: center;
           margin-bottom: 1rem;
+          height: 45px;
         }
 
         .footer-logo-image {
@@ -441,6 +490,7 @@ const Footer = () => {
           margin: 0 0 1.5rem 0;
           opacity: 0.7;
           max-width: 300px;
+          text-align: left;
         }
 
         .social-links {
@@ -468,10 +518,15 @@ const Footer = () => {
 
         .contact-title {
           color: #4E2520;
-          font-size: 0.875rem;
-          font-weight: 600;
+          font-size: 1.1rem;
+          font-family: 'MontserratBold';
+          font-weight: bold;
           letter-spacing: 1.5px;
           margin: 0 0 1.5rem 0;
+          line-height: 45px;
+          height: 45px;
+          display: flex;
+          align-items: center;
         }
 
         .contact-address {
@@ -484,8 +539,9 @@ const Footer = () => {
 
         .contact-info {
           display: flex;
-          flex-direction: column;
-          gap: 0.875rem;
+          flex-direction: row;
+          gap: 2rem;
+          flex-wrap: wrap;
         }
 
         .contact-link {
@@ -534,10 +590,6 @@ const Footer = () => {
             font-size: 2rem;
           }
 
-          .form-row:first-child {
-            grid-template-columns: 1fr;
-          }
-
           .footer-links {
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
@@ -570,7 +622,7 @@ const Footer = () => {
           }
 
           .link-list a {
-            font-size: 0.85rem;
+            font-size: 1.4rem;
           }
 
           .social-links {
