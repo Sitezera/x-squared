@@ -70,19 +70,17 @@
 
 .nav-button {
   background: transparent;
+  border: none;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
-}
-
-.nav-button:hover {
-  transform: translateY(-50%) scale(1.1);
+  outline: none;
 }
 
 .nav-left {
@@ -225,11 +223,11 @@
   }
 
   .nav-left {
-    left: -7%;
+    left: -8%;
   }
 
   .nav-right {
-    right: -7%;
+    right: -8%;
   }
 
   .nav-button img {
@@ -262,7 +260,7 @@
   
 
   .member-image-container {
-    height: 320px;
+    height: 235px;
   }
 
   .member-name {
@@ -285,6 +283,6 @@
 
   .nav-button img {
     width: 1rem;
-    height: auto;
+    height: 30px;
   }
 }

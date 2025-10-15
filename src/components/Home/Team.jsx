@@ -56,6 +56,7 @@ const Team = () => {
             aria-label="Previous team member"
             whileHover={{ scale: 1.1, x: -5 }}
             whileTap={{ scale: 0.95 }}
+            style={{ y: '-50%' }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             <img src={slidingBtn} alt="sliding button" />
@@ -131,7 +132,7 @@ const Team = () => {
             onClick={handleNext}
             aria-label="Next team member"
             whileHover={{ scale: 1.1, x: 5 }}
-            whileTap={{ scale: 0.95 }}
+            style={{ y: '-50%' }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             <img className={styles['rightBtn']} src={slidingBtn} alt="sliding button" />

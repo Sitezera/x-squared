@@ -152,7 +152,7 @@ const Projects = () => {
             onClick={prevProject}
             aria-label="Previous project"
             whileHover={{ scale: 1.15, x: -5 }}
-            whileTap={{ scale: 0.95 }}
+            style={{ y: '-50%' }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             <img className={styles.slidingButton} src={slidingBtn} alt="sliding button" />
@@ -164,6 +164,7 @@ const Projects = () => {
             aria-label="Next project"
             whileHover={{ scale: 1.15, x: 5 }}
             whileTap={{ scale: 0.95 }}
+            style={{ y: '-50%' }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             <img className={`${styles.slidingButton} ${styles.slidingBtnRight}`} src={slidingBtn} alt="sliding button" />
