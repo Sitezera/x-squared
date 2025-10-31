@@ -36,7 +36,7 @@
 }
 @font-face {
   font-family: 'MontserratBold';
-  src: url('/fonts/Montserrat-SemiBold.ttf') format('truetype');
+  src: url('/fonts/Montserrat-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -45,6 +45,12 @@
   src: url('/fonts/Montserrat-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
+}
+@font-face {
+  font-family: 'TheSeasonsBoldItalic';
+  src: url('/fonts/Fontspring-DEMO-theseasons-bdit.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
 }
 
 * {
@@ -194,5 +200,23 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.contact-title {
+  white-space: nowrap;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-family: 'MontserratBold', 'Montserrat', Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 1rem;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

@@ -11,7 +11,7 @@ const Statements = () => {
   const statements = {
     PURPOSE: {
       title: 'Purpose',
-      content: 'Our purpose is create a real estate brand that is driven by a value system that houses - transparency, accountability sustainability & creativity.'
+      content: 'Our purpose is create a real estate brand that is driven by a value system that houses - transparency, accountability sustainability & creativity.ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ'
     },
     VISION: {
       title: 'Vision',
@@ -122,11 +122,9 @@ const Statements = () => {
 
                 <motion.div
                   className={styles.arrowButton}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  whileHover={{ x: 10, scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
                   onClick={nextStatement}
                 >
                   <img src={arrowIcon} alt="Next" />
@@ -149,8 +147,6 @@ const Statements = () => {
 
             <motion.div
               className={styles.arrowButtonMobile}
-              whileHover={{ x: 10 }}
-              whileTap={{ scale: 0.75 }}
               onClick={nextStatement}
             >
               <img src={arrowIcon} alt="Next" />

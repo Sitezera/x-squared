@@ -150,13 +150,14 @@ const About = () => {
           text-align: left;
         }
 
-        .text-italic {
-          font-family: 'TheSeasonsRegularL', Georgia, serif;
-          font-style: italic;
-          font-size: 1.8rem;
-          line-height: 4rem;
-          text-align: left;
-          margin: 0;
+    .text-italic {
+            font-family: 'TheSeasons-BoldItalic', 'TheSeasons-Bold', 'TheSeasonsRegularL', Georgia, serif;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 1.8rem;
+            line-height: 4rem;
+            text-align: left;
+            margin: 0;
         }
 
         .continuous-paragraph {

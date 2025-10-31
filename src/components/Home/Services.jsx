@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FadeInOnScroll, SlideInFromLeft, SlideInFromRight, TextReveal, StaggerContainer, ScaleInOnScroll } from '../animations/ScrollAnimations'
+import { useSwipeable } from 'react-swipeable';
 import styles from './Services.module.css'
 
 const Services = () => {
@@ -32,22 +33,11 @@ const Services = () => {
     setCurrentServiceIndex((prev) => (prev === services.length - 1 ? 0 : prev + 1))
   }
 
-  const handleDragEnd = (event, info) => {
-    const swipeThreshold = 50
-    const swipeVelocityThreshold = 500
-
-    // Check both offset and velocity for better swipe detection
-    const shouldSwipeLeft = info.offset.x < -swipeThreshold || info.velocity.x < -swipeVelocityThreshold
-    const shouldSwipeRight = info.offset.x > swipeThreshold || info.velocity.x > swipeVelocityThreshold
-
-    if (shouldSwipeRight) {
-      // Swiped right - go to previous
-      handlePrevService()
-    } else if (shouldSwipeLeft) {
-      // Swiped left - go to next
-      handleNextService()
-    }
-  }
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setCurrentServiceIndex((prev) => Math.min(prev + 1, services.length - 1)),
+    onSwipedRight: () => setCurrentServiceIndex((prev) => Math.max(prev - 1, 0)),
+    trackMouse: true,
+  });
 
   return (
     <section className={styles.services} id="services">
@@ -81,15 +71,20 @@ const Services = () => {
             </div>
             
             <SlideInFromRight delay={0.8} distance={80} className={styles.heroImage}>
-              <ScaleInOnScroll
+              <ScaleInOnScroll 
                 delay={0.3}
                 initialScale={0.9}
                 threshold={0.2}
               >
-                <img
-                  src="/assets/sevices.png"
-                  alt="Our Services"
+                <motion.img 
+                  src="/assets/sevices.png" 
+                  alt="Our Services" 
                   className={styles.serviceHeroImg}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    rotateY: 5,
+                    transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
+                  }}
                 />
               </ScaleInOnScroll>
             </SlideInFromRight>
@@ -125,25 +120,13 @@ const Services = () => {
           </StaggerContainer>
 
           {/* Service Cards - Mobile Carousel */}
-          <div className={styles.servicesCarousel}>
+          <div className={styles.servicesCarousel} {...handlers}>
             <div className={styles.carouselWrapper}>
-              <motion.div
+              <div
                 className={styles.carouselTrack}
-                drag="x"
-                dragConstraints={{ left: -200, right: 200 }}
-                dragElastic={0.15}
-                dragTransition={{ bounceStiffness: 500, bounceDamping: 25 }}
-                onDragEnd={handleDragEnd}
-                animate={{
-                  x: `-${currentServiceIndex * 100}%`
+                style={{
+                  transform: `translateX(-${currentServiceIndex * 85}%)`
                 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 35,
-                  mass: 0.8
-                }}
-                style={{ touchAction: 'pan-y' }}
               >
                 {services.map((service, index) => (
                   <div
@@ -162,7 +145,7 @@ const Services = () => {
                     </p>
                   </div>
                 ))}
-              </motion.div>
+              </div>
               <div className={styles.carouselFade}></div>
             </div>
 

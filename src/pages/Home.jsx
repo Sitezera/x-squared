@@ -7,7 +7,7 @@ import Team from '../components/Home/Team'
 import Services from '../components/Home/Services'
 import Statements from '../components/Home/Statements'
 import Projects from '../components/Home/Projects'
-import Review from '../components/Home/Review'
+// import Review from '../components/Home/Review'
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -59,7 +59,7 @@ const Home = () => {
             <Services />
             <Statements />
             <Projects />
-            <Review />
+            {/* <Review /> */}
           </motion.div>
         )}
       </AnimatePresence>

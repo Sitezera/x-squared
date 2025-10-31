@@ -67,22 +67,22 @@
 
 .projectInfo {
     width: 100%;
-    order: 1;
+    order: -4;
 }
 
 .projectIntroContainer {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    order: -4;
 }
 
 .projectIntro {
     font-family: 'MontserratRegular';
-    position: absolute;
-    top: 0;
+    position: top;
     max-width: 400px;
     color: #4E2520;
     font-size: 0.875rem;
     line-height: 1.6;
-    margin: 0;
+    margin: -0.75rem 0 0 0;
     font-weight: 300;
     letter-spacing: 0.3px;
     text-align: left;
@@ -96,6 +96,12 @@
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 5;
+    touch-action: pan-y;
+    cursor: grab;
+}
+
+.projectShowcase:active {
+    cursor: grabbing;
 }
 
 .projectShowcaseMobile {
@@ -106,6 +112,10 @@
 
 .projectShowcaseDesktop {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     position: relative;
     z-index: 5;
 }
@@ -116,19 +126,19 @@
     font-weight: 300;
     font-style: italic;
     color: #FFFFF3;
-    margin: 0 0 1rem 0;
+    margin: 0;
     overflow: visible;
     text-wrap: nowrap;
     position: relative;
     z-index: 10;
     line-height: 1.1;
     letter-spacing: -1px;
+    text-align: center;
 }
 
 .projectDescription {
     font-family: 'MontserratRegular';
     position: relative;
-    left: 1.5rem;
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.95rem;
     line-height: 1.6;
@@ -136,28 +146,42 @@
     font-weight: 500;
     letter-spacing: 0.3px;
     max-width: 100%;
+    text-align: left;
 }
+@media (max-width: 768px) {
+    .projectShowcaseDesktop {
+        gap: 12px;
+    }
+}
+
 
 .projectImageContainer {
     order: 2;
     position: relative;
-    /* border-radius: 8px; */
     overflow: hidden;
-    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
     background: transparent;
     padding: 3px;
     margin: 0 auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
+    touch-action: pan-y;
+    cursor: grab;
 }
 
+.projectImageContainer:active {
+    cursor: grabbing;
+}
+
+    
 .projectImage {
     width: 100%;
+    max-width: 900px;
     height: auto;
+    min-height: 500px;
     display: block;
-    /* border-radius: 6px; */
     aspect-ratio: 4/3;
     object-fit: cover;
+    margin: 0 auto;
 }
 
 .navArrow {
@@ -167,15 +191,16 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: transparent;
-    border: none;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.3s ease;
     z-index: 10;
-    outline: none;
+}
+
+.navArrow:hover {
+    transform: translateY(-50%) scale(1.1);
 }
 
 .navPrev {
@@ -238,23 +263,24 @@
         letter-spacing: 1.5px;
     }
 
+
     .headerLine {
         width: 130px;
         top: 11px;
         margin-left: 0.5rem;
     }
 
-    .projectIntro {
-        position: relative;
-        max-width: 100%;
-        font-size: 0.8rem;
-        text-align: left;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-    }
-
-    .projectIntroContainer {
-        margin-bottom: 1.5rem;
+    .projectImage {
+        aspect-ratio: 1/1 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        min-width: 180px !important;
+        min-height: 120px !important;
+        max-height: 320px !important;
+        object-fit: cover !important;
+        display: block;
+        margin: 0 auto;
     }
 
     .projectsContent {
@@ -280,6 +306,19 @@
         text-align: left;
         margin-bottom: 0;
         margin-top: 1.5rem;
+        cursor: default;
+    }
+
+    .projectShowcaseMobile:active {
+        cursor: default;
+    }
+
+    .projectShowcaseDesktop {
+        cursor: default;
+    }
+
+    .projectShowcaseDesktop:active {
+        cursor: default;
     }
 
     .projectImageContainer {
@@ -287,10 +326,19 @@
         margin: 0;
         padding: 0;
         order: 2;
+        cursor: default;
+    }
+
+    .projectImageContainer:active {
+        cursor: default;
     }
 
     .projectImage {
-        border-radius: 8px;
+        border-radius: 0 !important;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
 
     .projectTitle {
@@ -495,4 +543,46 @@
     .navNext {
         right: -4rem;
     }
+}
+/* Tighter spacing between intro text and project title */
+.projectIntroContainer {
+  margin-bottom: 0.1rem !important;
+}
+
+.projectIntro {
+  margin: -0.5rem 0 0 0 !important;
+  line-height: 1.4;
+}
+
+/* For large screens, keep it slightly balanced */
+@media (min-width: 1024px) {
+  .projectIntroContainer {
+    margin-bottom: 0.2rem !important;
+  }
+  .projectIntro {
+    margin: -0.4rem 0 0 0 !important;
+  }
+}
+/* Fix overlap between intro paragraph and image on mobile */
+@media (max-width: 768px) {
+  .projectsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .projectInfo {
+    order: 1;
+    margin-bottom: 1rem; /* add gap below intro */
+  }
+
+  .projectImageContainer {
+    order: 2;
+    margin-top: 0.5rem; /* ensure image doesn't overlap text */
+  }
+
+  .projectIntro,
+  .projectIntroContainer {
+    margin-bottom: 0.75rem !important;
+  }
 }
