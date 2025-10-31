@@ -113,7 +113,6 @@
     transform: translateY(-50%);
     max-width: 400px;
     z-index: 2;
-    min-height: 350px;
 }
 
 .statementTitle {
@@ -145,9 +144,6 @@
     cursor: pointer;
     display: inline-block;
     transition: all 0.3s ease;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 
 .arrowButton img {
@@ -191,45 +187,33 @@
 
     .statementsHeader {
         flex-direction: row;
-        flex-wrap: nowrap;
         margin-bottom: 2.5rem;
-        overflow: hidden;
-        align-items: center;
     }
 
     .sectionTitle {
-        font-size: 0.9rem;
-        letter-spacing: 1.5px;
-        flex-shrink: 0;
-        white-space: nowrap;
+        font-size: 1rem;
+        letter-spacing: 2px;
     }
 
     .dividerLine {
-        flex: 0 0 4rem;
-        margin-right: 0.75rem;
-        flex-shrink: 1;
-        min-width: 2rem;
+        flex: 0 0 10rem;
+        margin-right: 1rem;
     }
 
     .statementsNav {
         left: 0;
         top: 0;
         gap: 0.5rem;
-        margin-top: 0;
-        flex-shrink: 0;
-        display: flex;
-        flex-wrap: nowrap;
+        margin-top: 0.25rem;
     }
 
     .navItem {
-        font-size: 0.5rem;
-        letter-spacing: 0.5px;
-        padding: 0.5rem 0.25rem;
-        white-space: nowrap;
+        font-size: 0.55rem;
+        letter-spacing: 1px;
     }
 
     .navItem.active {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
 
     /* Mobile-only title above image */
@@ -283,11 +267,11 @@
         color: #4E2520;
         font-size: 0.85rem;
         line-height: 1.6;
-        margin: 0 0 1.5rem 0;
         font-weight: 300;
         letter-spacing: 0.3px;
         opacity: 0.8;
         text-align: left;
+        min-height: 120px;
     }
 
     .arrowButtonMobile {
@@ -313,34 +297,27 @@
 
     .statementsHeader {
         margin-bottom: 2rem;
-        gap: 0.1rem;
     }
 
     .sectionTitle {
-        font-size: 0.75rem;
-        letter-spacing: 1px;
+        font-size: 0.9rem;
     }
 
     .dividerLine {
-        flex: 0 0 80px;
-        min-width: 1.5rem;
-        margin-right: 0.5rem;
-        margin-top: 7px;
+        flex: 0 0 8rem;
     }
 
     .statementsNav {
-        gap: 0.4rem;
-        margin-top: 0;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
     }
 
     .navItem {
-        font-size: 0.45rem;
-        letter-spacing: 0.3px;
-        padding: 0.4rem 0.2rem;
+        font-size: 0.3rem;
     }
 
     .navItem.active {
-        font-size: 0.6rem;
+        font-size: 0.45rem;
     }
 
     .statementTitleMobile {
@@ -351,11 +328,11 @@
     .statementTextMobile {
         font-size: 0.75rem;
         line-height: 1.5;
-        margin-bottom: 1.25rem;
+        min-height: 80px;
     }
 
-    .arrowButtonMobile svg {
-        width: 40px;
+    .arrowButtonMobile img {
+        width: 3rem;
         height: 30px;
     }
 }

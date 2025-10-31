@@ -233,7 +233,7 @@ const Footer = () => {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                Varun.xsquared@gmail.com
+                varun.xsquared@gmail.com
               </a>
             </div>
           </div>
@@ -272,6 +272,7 @@ const Footer = () => {
 
         .section-subtitle {
           color: #4E2520;
+          font-family: 'MontserratRegular';
           font-size: 0.95rem;
           margin: 0 0 2.5rem 0;
           opacity: 0.8;
@@ -373,10 +374,10 @@ const Footer = () => {
         }
 
         .form-textarea {
-          resize: vertical;
-          min-height: 2.8rem;
-          max-height: 2.8rem;
-          height: 2.8rem;
+          resize: none;
+          min-height: 45px;
+          max-height: 45px;
+          height: 45px;
           font-family: 'MontserratRegular';
           background: #FFFFF3;
           padding: 0.625rem 1rem;
@@ -398,8 +399,9 @@ const Footer = () => {
           padding: 0.875rem 2.5rem;
           border: none;
           border-radius: 24px;
+          font-family: 'MontserratBold';
           font-size: 0.875rem;
-          font-weight: 600;
+          font-weight: bold;
           letter-spacing: 1px;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -452,6 +454,7 @@ const Footer = () => {
         .link-list a {
           color: #4E2520;
           text-decoration: none;
+          font-family: 'MontserratRegular';
           font-size: 1.2rem;
           opacity: 0.7;
           transition: all 0.3s ease;
@@ -485,6 +488,7 @@ const Footer = () => {
 
         .brand-description {
           color: #4E2520;
+          font-family: 'MontserratRegular';
           font-size: 0.875rem;
           line-height: 1.6;
           margin: 0 0 1.5rem 0;
@@ -531,6 +535,7 @@ const Footer = () => {
 
         .contact-address {
           color: #4E2520;
+          font-family: 'MontserratRegular';
           font-size: 0.875rem;
           line-height: 1.6;
           margin: 0 0 1.5rem 0;
@@ -547,6 +552,7 @@ const Footer = () => {
         .contact-link {
           color: #4E2520;
           text-decoration: none;
+          font-family: 'MontserratRegular';
           font-size: 0.9rem;
           display: flex;
           align-items: center;
@@ -610,7 +616,12 @@ const Footer = () => {
           }
 
           .footer-content {
-            gap: 3rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          }
+          .footer-bottom{
+          padding-top:0;
+          gap: 1rem;
           }
 
           .footer-links {

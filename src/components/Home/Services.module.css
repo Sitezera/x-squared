@@ -125,16 +125,8 @@
 .carouselTrack {
     display: flex;
     gap: 1.5rem;
+    transition: transform 0.5s ease;
     padding: 0 0.5rem;
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-.carouselTrack:active {
-    cursor: grabbing;
 }
 
 .carouselCard {
@@ -144,8 +136,6 @@
     filter: blur(0px);
     transition: all 0.5s ease;
     cursor: pointer;
-    pointer-events: auto;
-    touch-action: pan-y;
 }
 
 .carouselCard.activeCard {
@@ -239,8 +229,8 @@
     }
 
     .servicesTitle {
-        font-size: 2.5rem;
-        left: 0;
+        font-size: 3rem;
+        left: -5px;
         text-wrap: wrap;
     }
 
@@ -278,14 +268,12 @@
     }
 
     .carouselTrack {
-        gap: 0;
+        gap: 1.25rem;
         padding: 0;
-        will-change: transform;
     }
 
     .carouselCard {
-        flex: 0 0 100%;
-        min-width: 100%;
+        flex: 0 0 80%;
     }
 
     .carouselFade {
@@ -341,7 +329,7 @@
     }
 
     .servicesTitle {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     .servicesDescription {
@@ -349,13 +337,11 @@
     }
 
     .carouselCard {
-        flex: 0 0 100%;
-        min-width: 100%;
+        flex: 0 0 82%;
     }
 
     .carouselTrack {
-        gap: 0;
-        will-change: transform;
+        gap: 1rem;
     }
 
     .carouselFade {

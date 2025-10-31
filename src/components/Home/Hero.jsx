@@ -375,7 +375,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           }
 
           .hero-title {
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2.8rem, 8vw, 4rem);
             white-space: normal;
           }
         }
@@ -406,7 +406,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           }
 
           .hero-title {
-            font-size: clamp(2rem, 7vw, 3rem);
+            font-size: clamp(2.8rem, 7vw, 3rem);
           }
 
           .scroll-indicator {

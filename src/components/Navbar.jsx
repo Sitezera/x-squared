@@ -38,10 +38,14 @@ const Navbar = () => {
     { name: 'ABOUT US', href: '/about' },
     { name: 'PROJECTS', href: '/projects' },
     { name: 'OUR TEAM', href: '/team' },
-    { name: 'SERVICES', href: '/services' },
+    { name: 'SERVICES', href: '/services' }
+  ];
+
+  // Only for hamburger menu
+  const menuNavItems = [
     { name: 'FAQ', href: '/faq' },
     { name: 'CONTACT US', href: '/contact' }
-  ]
+  ];
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -137,7 +141,7 @@ const Navbar = () => {
 
               <nav className="menu-nav" aria-label="Main navigation">
                 <ul className="menu-list">
-                  {navItems.map((item, index) => (
+                  {menuNavItems.map((item, index) => (
                     <motion.li
                       key={item.name}
                       className="menu-item"
@@ -190,6 +194,7 @@ const Navbar = () => {
           display: flex;
           align-items: center;
           padding: 0.5rem 0;
+          justify-content: space-between;
         }
 
         .logo {
@@ -249,11 +254,11 @@ const Navbar = () => {
           display: flex;
           gap: 2rem;
           align-items: center;
-          margin-left: 13rem;
+          margin-left: auto;
         }
 
         .desktop-nav-link {
-          font-family: 'MontserratRegular';
+          font-family: 'MontserratSemiBold';
           text-decoration: none;
           color: #4E2520;
           font-size: 0.9rem;
@@ -357,7 +362,8 @@ const Navbar = () => {
           padding: 1.25rem 2.5rem;
           text-decoration: none;
           color: #4E2520;
-          font-weight: 500;
+          font-family: 'MontserratSemiBold';
+          font-weight: 600;
           font-size: 1.5rem;
           letter-spacing: 1px;
           transition: all 0.3s ease;
