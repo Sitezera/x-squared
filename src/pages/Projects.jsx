@@ -1,472 +1,450 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import Hero from '../components/Home/Hero'
+import Review from '../components/Home/Review'
 
 const Projects = () => {
-  const projectCategories = [
-    {
-      title: "Luxury Villas",
-      projects: [
-        {
-          name: "Amidst the Hills – Nandi Hills",
-          size: "32 Acres",
-          description: "A high-end villa development in the Nandi Hills region. Planned as an ultra-luxury gated community with panoramic hill views, it targets affluent buyers seeking vacation or retirement homes."
-        },
-        {
-          name: "Kandhwara",
-          size: "38 Acres",
-          description: "A scenic development offering villaments and villas. Designed for seamless expansion, it taps into the rising demand around Nandi Hills with a mix of nature, space, and smart living."
-        }
-      ]
-    },
-    {
-      title: "Residential & Plotted Developments",
-      projects: [
-        {
-          name: "Kavaranahalli",
-          size: "31.5 Acres",
-          description: "A premium residential project spread across 4.5 and 27 acres in the scenic Nandi Hills region. Offers plotted developments and future-ready villas, crafted in phases for sustainable growth."
-        },
-        {
-          name: "Yarappanahalli",
-          size: "4 Acres",
-          description: "A residential project featuring mid-rise apartments for professionals and families. Located near KIADB Hardware Park, it offers quality living in East Bangalore's fast-growing corridor."
-        },
-        {
-          name: "Vemgal",
-          size: "2 Acres",
-          description: "A compact plotted development near Vemgal Industrial Area. Provides well-sized plots with essential infrastructure, ideal for building homes or making smart investments."
-        },
-        {
-          name: "Manchanballe",
-          size: "30 Acres",
-          description: "A plotted residential community designed for professionals and families. Strategically located near NH44 in Chikkaballapur, it combines accessibility with lifestyle convenience."
-        }
-      ]
-    },
-    {
-      title: "Integrated & Mixed-Use Townships",
-      projects: [
-        {
-          name: "Ettakodi",
-          size: "180 Acres",
-          description: "A flagship self-sustained township envisioned as a 'city within a city.' It integrates residential, commercial, educational, healthcare, and recreational spaces to serve the region's long-term growth."
-        },
-        {
-          name: "Coimbatore",
-          size: "31 Acres",
-          description: "A plotted residential development marking XSquared's expansion beyond Karnataka. Designed for Coimbatore's workforce and NRI investors, it combines essential amenities with investment security."
-        }
-      ]
-    },
-    {
-      title: "Commercial Spaces",
-      projects: [
-        {
-          name: "Bagalur",
-          size: "60,000 sq. ft.",
-          description: "A commercial development designed for tech and growing businesses. Strategically located near the airport and upcoming tech parks, it has scope for mixed-use expansion in North Bangalore's growth corridor."
-        },
-        {
-          name: "Verlakonda",
-          size: "52 Acres",
-          description: "A mixed-use development with 12 acres dedicated to commercial space and 40 acres to residential plots. Planned to create a vibrant, self-sustained hub where living and working meet."
-        }
-      ]
-    }
-  ]
-
   return (
     <div className="projects-page">
       {/* Hero Section */}
-      <section className="projects-hero">
-        <div className="container">
-          <motion.div
-            className="hero-content"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+      <Hero 
+        isLoading={false} 
+        isFirstLoad={false} 
+        leftText="Built on Vision" 
+        rightText="Delivered with Trust"
+        heroImage="/assets/Asset 20@2x.png"
+        heroImageMobile="/assets/Asset 20@2x.png"
+      />
+
+      {/* All Projects Showcase - Single Container */}
+      <section className="projects-showcase-section">
+        
+        {/* Project 1: Amidst The Hill - Text RIGHT, Image LEFT */}
+        <div className="project-item">
+          <motion.div 
+            className="project-image"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="hero-title">Our Projects</h1>
-            <p className="hero-description">
-              From luxury villas and plotted communities to integrated townships and commercial hubs, our projects span across diverse categories, each designed to unlock land potential and create lasting value.
-            </p>
+            <img src="/assets/1_1 - Photo.jpg" alt="Amidst The Hill" />
           </motion.div>
-        </div>
-      </section>
-
-      {/* Projects Categories */}
-      {projectCategories.map((category, categoryIndex) => (
-        <section key={categoryIndex} className={`projects-category ${categoryIndex % 2 === 0 ? 'bg-light' : 'bg-dark'}`}>
-          <div className="container">
-            <motion.div
-              className="category-header"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="category-title">{category.title}</h2>
-              <div className="header-line"></div>
-            </motion.div>
-
-            <div className="projects-grid">
-              {category.projects.map((project, projectIndex) => (
-                <motion.div
-                  key={projectIndex}
-                  className="project-card"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: projectIndex * 0.2 }}
-                >
-                  <div className="project-header">
-                    <h3 className="project-name">{project.name}</h3>
-                    <span className="project-size">{project.size}</span>
-                  </div>
-                  <p className="project-description">{project.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* CTA Section */}
-      <section className="projects-cta">
-        <div className="container">
-          <motion.div
-            className="cta-content"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div 
+            className="project-content"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="section-header">
-              <h2 className="section-title">Explore Investment Opportunities</h2>
-              <div className="header-line"></div>
+            <p className="project-label">PROJECT</p>
+            <h1 className="project-title">
+              <a href="/amidst-the-hill">Amidst The Hill</a>
+            </h1>
+            <div className="project-desc">
+              <h4>Overview</h4>
+              <p>Ultra-luxury villas 60 kilometers from Bengaluru, positioned at elevation with direct hill views. Amidst the Hills targets buyers seeking vacation homes or retirement properties in an area with limited high-end inventory. Gated community built for privacy, designed for appreciation. For those who want distance from the city without losing access to it.</p>
             </div>
-            <p className="cta-text">
-              Each project represents a carefully selected opportunity designed to maximize value and deliver long-term growth. From luxury developments to strategic commercial spaces, discover how our projects can become part of your investment portfolio.
-            </p>
           </motion.div>
         </div>
+
+        {/* Project 2: Nava Kandwara - Image LEFT, Text RIGHT (reverse) */}
+        <div className="project-item reverse">
+          <motion.div 
+            className="project-image"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <img src="/assets/View 1_Option 1.jpg" alt="Nava Kandwara" />
+          </motion.div>
+          <motion.div 
+            className="project-content"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p className="project-label cream-text">PROJECT</p>
+            <h1 className="project-title cream-text">
+              <a href="/nava-kandwara">Nava Kandwara</a>
+            </h1>
+            <div className="project-desc">
+              <h4>Overview</h4>
+              <p>Villas and villaments on 38 acres in Bengaluru's northern growth corridor. Kandhwara sits where infrastructure investment is moving, offering larger plots than city alternatives at better entry points. Designed for primary residences or long-term holds. For buyers who track development patterns, not just property listings.</p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Project 3: Nava Manchanabelle - Text RIGHT, Image LEFT */}
+        <div className="project-item">
+          <motion.div 
+            className="project-image"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <img src="/assets/Navamanchalle.png" alt="Nava Manchanabelle" />
+          </motion.div>
+          <motion.div 
+            className="project-content"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="project-label">PROJECT</p>
+            <h1 className="project-title">
+              <a href="/nava-manchanabelle">Nava Manchanabelle</a>
+            </h1>
+            <div className="project-desc">
+              <h4>Overview</h4>
+              <p>A plotted residential community designed for professionals and families. Strategically located near NH44 in Chikkaballapur, it combines accessibility with lifestyle convenience.</p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Project 4: Nava Harihara - Image LEFT, Text RIGHT (reverse) */}
+        <div className="project-item reverse">
+          <motion.div 
+            className="project-image"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <img src="/assets/WhatsApp Image 2025-11-21 at 20.39.10.jpeg" alt="Nava Harihara" />
+          </motion.div>
+          <motion.div 
+            className="project-content"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p className="project-label cream-text">PROJECT</p>
+            <h1 className="project-title cream-text">
+              <a href="/nava-harihara">Nava Harihara</a>
+            </h1>
+            <div className="project-desc">
+              <h4>Overview</h4>
+              <p>A premium residential project spread across 4.5 and 27 acres in the scenic Nandi Hills region. Offers plotted developments and future-ready villas, crafted in phases for sustainable growth.</p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Project 5: Premium Villaments - Text RIGHT, Image LEFT */}
+        <div className="project-item">
+          <motion.div 
+            className="project-image"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <img src="/assets/ATHimage.png" alt="Premium Villaments" />
+          </motion.div>
+          <motion.div 
+            className="project-content"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="project-label">PROJECT</p>
+            <h1 className="project-title">
+              <a href="#">Premium Villaments</a>
+            </h1>
+            <div className="project-desc">
+              <h4>Overview</h4>
+              <p>Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.</p>
+            </div>
+          </motion.div>
+        </div>
+
       </section>
+
+      {/* Review Section */}
+      <Review />
 
       <style jsx>{`
         .projects-page {
           background: #FFFFF3;
           min-height: 100vh;
           padding-top: 80px;
+          overflow-x: hidden;
         }
 
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 2rem;
+        /* Projects Showcase Section - Single Orange Container */
+        .projects-showcase-section {
+          width: 100%;
+          background: #E87438;
+          padding: 0;
+          margin: 0;
+          overflow-x: hidden;
         }
 
-        /* Hero Section */
-        .projects-hero {
-          padding: 6rem 0 4rem;
-          text-align: center;
+        /* Individual Project Item */
+        .project-item {
+          display: flex;
+          align-items: center;
+          min-height: 80vh;
+          background: #E87438;
+          margin-bottom: 4rem
         }
 
-        .hero-title {
-          font-family: 'Times New Roman', Georgia, serif;
-          font-size: clamp(3.5rem, 6vw, 6rem);
-          font-weight: 300;
+        /* Reverse layout for alternating design - Image on left */
+        .project-item.reverse {
+          flex-direction: row-reverse;
+        }
+
+        /* Project Content - Matches .right-column */
+        .project-content {
+          flex: 0.3;
+          padding: 6rem 12rem;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        /* Project Image - Matches .left-column */
+        .project-image {
+          flex: 0.7;
+          overflow: visible;
+          height: 100vh;
+          padding-left: 12rem;
+          padding-top: 10rem;
+        }
+
+        /* Reverse layout: image on left - needs different padding */
+        .project-item.reverse .project-image {
+            padding-right: 12rem;
+            padding-top: 0;
+            padding-left: 0;
+        }
+
+        /* Base image styling */
+        .project-image img {
+          width: 100%;
+          aspect-ratio: 4/3;
+          object-fit: cover;
+          display: block;
+          margin-left: 0;
+        }
+
+        /* Reverse layout image - push right with margin */
+        .project-item.reverse .project-image img {
+          width: 100%;
+          margin-top: -2rem;
+        }
+
+        /* Reverse layout content - pull up with negative margin */
+        .project-item.reverse .project-content {
+          padding-top: 0;
+          margin-top: -24rem;
+        }
+
+        /* Overlapping sections for magazine effect */
+        .project-item:nth-child(2) {
+          margin-bottom: -40vh;
+        }
+
+        .project-item:nth-child(4) {
+          margin-bottom: -20vh;
+        }
+
+        .project-item:nth-child(5) {
+          margin-top: -20rem;
+        }
+
+        /* Typography - Exact match to old design */
+        .project-label {
+          font-family: 'Montserrat', sans-serif;
+          text-transform: uppercase;
+          font-weight: 900;
+          letter-spacing: 2px;
+          font-size: 0.9rem;
+          margin: 0 0 1rem 0;
+          color: #fffff3;
+        }
+
+        .project-label.cream-text {
+          color: #FFFFF3;
+        }
+
+        .project-title {
+          font-family: 'TheSeasonsLight', 'The Seasons', 'Playfair Display', serif;
+          font-size: 4rem;
           font-style: italic;
-          color: #4E2520;
-          margin: 0 0 2rem 0;
-          line-height: 1.1;
+          margin: 1rem 0 2rem 0;
+          line-height: 1.2;
+          color: #FFFFF3;
         }
 
-        .hero-description {
-          font-family: 'Times New Roman', Georgia, serif;
-          font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-          font-style: italic;
-          color: #4E2520;
-          max-width: 900px;
-          margin: 0 auto;
+        .project-title.cream-text {
+          color: #FFFFF3;
+        }
+
+        .project-title a {
+          color: inherit;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .project-title a:hover {
+          color: inherit;
+        }
+
+        .project-desc {
+          margin-top: 1rem;
+          font-family: 'MontserratSemiBold', 'Montserrat', Arial, sans-serif;
+          font-weight: 600;
+          font-size: 0.95rem;
           line-height: 1.6;
-          font-weight: 300;
+          opacity: 0.95;
+          color: #4e2520;
         }
 
-        /* Projects Categories */
-        .projects-category {
-          padding: 6rem 0;
+        .project-desc h4 {
+          font-weight: 700;
+          margin: 0 0 0.5rem 0;
+          color: #4e2520;
         }
 
-        .projects-category.bg-light {
-          background: #FFFFF3;
-        }
-
-        .projects-category.bg-dark {
-          background: #4E2520;
-          border-radius: 20px;
-          margin: 4rem 0;
-        }
-
-        .category-header {
-          display: flex;
-          align-items: center;
-          margin-bottom: 4rem;
-          gap: 2rem;
-        }
-
-        .category-title {
-          font-size: 2.5rem;
-          font-weight: 500;
-          letter-spacing: 1px;
+        .project-desc p {
           margin: 0;
-          white-space: nowrap;
-        }
-
-        .bg-light .category-title {
-          color: #4E2520;
-        }
-
-        .bg-dark .category-title {
-          color: #FFFFF3;
-        }
-
-        .header-line {
-          flex: 1;
-          height: 1px;
-        }
-
-        .bg-light .header-line {
-          background: #4E2520;
-        }
-
-        .bg-dark .header-line {
-          background: #FFFFF3;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-          gap: 3rem;
-        }
-
-        .project-card {
-          padding: 2.5rem;
-          border-radius: 20px;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .bg-light .project-card {
-          background: #FFFFF3;
-          border: 2px solid #F3793C;
-        }
-
-        .bg-dark .project-card {
-          background: rgba(255, 255, 243, 0.1);
-          border: 2px solid #F3793C;
-        }
-
-        .project-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 15px 40px rgba(243, 121, 60, 0.2);
-        }
-
-        .project-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1.5rem;
-          gap: 1rem;
-        }
-
-        .project-name {
-          font-size: 1.4rem;
-          font-weight: 600;
-          margin: 0;
-          line-height: 1.3;
-          flex: 1;
-        }
-
-        .bg-light .project-name {
-          color: #4E2520;
-        }
-
-        .bg-dark .project-name {
-          color: #FFFFF3;
-        }
-
-        .project-size {
-          background: #F3793C;
-          color: #FFFFF3;
-          padding: 0.5rem 1rem;
-          border-radius: 25px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          white-space: nowrap;
-        }
-
-        .project-description {
-          font-size: 1rem;
-          line-height: 1.7;
-          margin: 0;
-          text-align: justify;
-        }
-
-        .bg-light .project-description {
-          color: #4E2520;
-          opacity: 0.85;
-        }
-
-        .bg-dark .project-description {
-          color: #FFFFF3;
-          opacity: 0.9;
-        }
-
-        /* CTA Section */
-        .projects-cta {
-          padding: 6rem 0;
-          background: #F3793C;
-          border-radius: 20px;
-          margin: 4rem 0;
-        }
-
-        .section-header {
-          display: flex;
-          align-items: center;
-          margin-bottom: 3rem;
-          gap: 2rem;
-        }
-
-        .section-title {
-          color: #FFFFF3;
-          font-size: 2.5rem;
-          font-weight: 500;
-          letter-spacing: 1px;
-          margin: 0;
-          white-space: nowrap;
-        }
-
-        .projects-cta .header-line {
-          background: #FFFFF3;
-        }
-
-        .cta-text {
-          color: #FFFFF3;
-          font-family: 'Times New Roman', Georgia, serif;
-          font-size: 1.5rem;
-          font-style: italic;
-          font-weight: 300;
-          line-height: 1.8;
-          margin: 0;
-          text-align: center;
-          max-width: 800px;
-          margin: 0 auto;
+          color: #4e2520;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
-          .projects-grid {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
+          /* Neutralize overlapping for tablet */
+          .project-item:nth-child(2),
+          .project-item:nth-child(4) {
+            margin-bottom: 0 !important;
           }
 
-          .hero-title {
-            font-size: clamp(3rem, 5vw, 5rem);
+          .project-item:nth-child(5) {
+            margin-top: 0 !important;
           }
 
-          .hero-description {
-            font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+          .project-item.reverse .project-content {
+            margin-top: 0 !important;
+          }
+
+          .project-item {
+            flex-direction: column !important;
+            min-height: auto;
+            padding: 3rem 2rem;
+          }
+
+          .project-content {
+            flex: unset;
+            width: 100%;
+            padding: 0 0 2rem 0 !important;
+          }
+
+          .project-image {
+            flex: unset;
+            width: 100%;
+            height: auto;
+            padding: 0 !important;
+          }
+
+          .project-image img {
+            width: 100% !important;
+            margin: 0 !important;
+          }
+
+          .project-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+          }
+
+          .project-label {
+            font-size: 0.85rem;
+          }
+
+          .project-desc {
+            font-size: 0.9rem;
           }
         }
 
         @media (max-width: 768px) {
-          .container {
-            padding: 0 1.5rem;
+          .projects-showcase-section {
+            padding: 0;
           }
 
-          .projects-hero {
-            padding: 4rem 0 3rem;
+          .project-item {
+            flex-direction: column !important;
+            padding: 0;
+            min-height: auto;
+            margin: 0 !important;
           }
 
-          .projects-category {
-            padding: 4rem 0;
+          .project-content {
+            order: 1;
+            padding: 2.5rem 1.5rem 0 1.5rem !important;
+            margin: 0 !important;
           }
 
-          .projects-category.bg-dark {
-            margin: 3rem 0;
-            border-radius: 16px;
+          .project-image {
+            order: 2;
+            padding: 1.5rem 1.5rem 2.5rem 1.5rem !important;
+            height: auto !important;
           }
 
-          .projects-cta {
-            padding: 4rem 0;
-            margin: 3rem 0;
-            border-radius: 16px;
+          .project-image img {
+            width: 100% !important;
+            margin: 0 !important;
           }
 
-          .category-header,
-          .section-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 3rem;
+          .project-label {
+            font-size: 0.8rem;
+            margin: 0 0 0.8rem 0 !important;
           }
 
-          .header-line {
-            width: 100%;
+          .project-title {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin: 0.5rem 0 1.5rem 0 !important;
           }
 
-          .category-title,
-          .section-title {
-            font-size: 2rem;
+          .project-desc {
+            font-size: 0.9rem;
+            line-height: 1.5;
           }
 
-          .project-card {
-            padding: 2rem;
-          }
-
-          .project-header {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-
-          .project-size {
-            align-self: flex-start;
-          }
-
-          .cta-text {
-            font-size: 1.3rem;
-            text-align: left;
+          .project-desc h4 {
+            font-size: 1rem;
           }
         }
 
         @media (max-width: 480px) {
-          .container {
-            padding: 0 1rem;
+          .project-content {
+            padding: 2rem 1.25rem 0 1.25rem !important;
           }
 
-          .projects-hero {
-            padding: 3rem 0 2rem;
+          .project-image {
+            padding: 1.25rem 1.25rem 2rem 1.25rem !important;
           }
 
-          .project-card {
-            padding: 1.5rem;
+          .project-label {
+            font-size: 0.75rem;
           }
 
-          .project-name {
-            font-size: 1.2rem;
+          .project-title {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin: 0.5rem 0 1.2rem 0 !important;
           }
 
-          .project-description {
+          .project-desc {
+            font-size: 0.85rem;
+          }
+
+          .project-desc h4 {
             font-size: 0.95rem;
-          }
-
-          .category-title,
-          .section-title {
-            font-size: 1.8rem;
-          }
-
-          .cta-text {
-            font-size: 1.2rem;
           }
         }
       `}</style>

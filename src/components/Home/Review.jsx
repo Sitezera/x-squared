@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Review.module.css'
-import slidingBtm from '/assets/slidingBtn.svg'
+import slidingBtn from '/assets/slidingBtn.svg'
 
 const Review = () => {
   const [currentReview, setCurrentReview] = useState(0)
 
   const reviews = [
     {
-      quote: "Home is where love resides, memories are created, and dreams are nurtured. I have found my sanctuary in this beautiful property. Finding the perfect that resonates with your own!",
+      quote: "Home is where love resides, memories are created, and dreams are nurtured. I have found my sanctuary in this beautiful property. Finding the perfect that resonates with your own",
       name: "Pranav Mital",
       position: "Property Expert",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400&q=80",
+      image: "https://images.pexels.com/photos/19570521/pexels-photo-19570521.jpeg",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
     },
     {
@@ -49,7 +49,7 @@ const Review = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            CUSTOMERS SAYS
+            UP COMING PROJECT
           </motion.h2>
           <motion.p 
             className={styles.sectionSubtitle}
@@ -58,13 +58,13 @@ const Review = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Client Words That Reflects Our Excellence
+            Redefining Real Estate for the Next Generation
           </motion.p>
         </div>
 
         <div className={styles.reviewContent}>
-          <button className={`${styles.navArrow} ${styles.prevArrow}`} onClick={prevReview}>
-            <span><img src={slidingBtm} alt="sliding button" /></span>
+          <button className={`${styles.navArrow} ${styles.prevArrow}`} aria-label="Previous Review" disabled style={{ pointerEvents: 'none', opacity: 0.5, marginTop: '-2rem' }}>
+            <img src={slidingBtn} alt="Previous" draggable="false" style={{ pointerEvents: 'none' }} />
           </button>
 
           <div className={styles.reviewMain}>
@@ -92,25 +92,11 @@ const Review = () => {
               <div className={styles.quoteText}>
                 "{reviews[currentReview].quote}"
               </div>
-              
-              <div className={styles.customerInfo}>
-                <div className={styles.customerAvatar}>
-                  <img 
-                    src={reviews[currentReview].avatar} 
-                    alt={reviews[currentReview].name}
-                    className={styles.avatarImg}
-                  />
-                </div>
-                <div className={styles.customerDetails}>
-                  <h4 className={styles.customerName}>{reviews[currentReview].name}</h4>
-                  <p className={styles.customerPosition}>{reviews[currentReview].position}</p>
-                </div>
-              </div>
             </motion.div>
           </div>
 
-          <button className={`${styles.navArrow} ${styles.nextArrow}`} onClick={nextReview}>
-            <span><img src={slidingBtm} alt="sliding button" /></span>
+          <button className={`${styles.navArrow} ${styles.nextArrow}`} aria-label="Next Review" disabled style={{ pointerEvents: 'none', opacity: 0.5, marginTop: '-2rem' }}>
+            <img className={styles.rightBtn} src={slidingBtn} alt="Next" draggable="false" style={{ pointerEvents: 'none' }} />
           </button>
         </div>
       </div>

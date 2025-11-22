@@ -43,6 +43,11 @@ const Navbar = () => {
 
   // Only for hamburger menu
   const menuNavItems = [
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT US', href: '/about' },
+    { name: 'PROJECTS', href: '/projects' },
+    { name: 'OUR TEAM', href: '/team' },
+    { name: 'OUR SERVICES', href: '/services' },
     { name: 'FAQ', href: '/faq' },
     { name: 'CONTACT US', href: '/contact' }
   ];
@@ -173,7 +178,7 @@ const Navbar = () => {
           left: 0;
           right: 0;
           padding: 0.5rem 2rem;
-          background: transparent;
+          background: #FFFFF3;
           z-index: 1000;
           transition: all 0.3s ease;
         }

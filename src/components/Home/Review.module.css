@@ -57,7 +57,6 @@
     font-family: 'MontserratRegular';
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     background: transparent;
     border: none;
     color: #F3793C;
@@ -75,18 +74,15 @@
 }
 
 .prevArrow {
-    left: -80px;
+    right: -3rem;
 }
 
 .nextArrow {
-    right: -80px;
-}
-.nextArrow span img{
-    transform: rotate(180deg);
+    left: -3rem;
 }
 
-.navArrow:hover {
-    transform: translateY(-50%) scale(1.1);
+.rightBtn {
+    transform: rotate(180deg);
 }
 
 .reviewMain {
@@ -106,7 +102,7 @@
 
 .reviewImg {
     object-fit: cover;
-    width: 50%;
+    width: 70%;
     height: auto;
     display: block;
 }
@@ -116,14 +112,15 @@
     max-width: 700px;
     right: 0;
     width: fit-content;
-    background: #FFFFFF;
+        background: linear-gradient(90deg, rgba(243, 121, 60, 0.85) 60%, rgba(243, 121, 60, 0) 100%);
+    backdrop-filter: blur(10px);
     padding: 2.5rem;
     z-index: 10;
 }
 
 .quoteText {
-    font-family: 'MontserratRegular';
-    color: #4E2520;
+    font-family: 'Montserrat', 'MontserratRegular', sans-serif;
+    color: #FFFFFF;
     font-size: 1.1rem;
     line-height: 1.6;
     margin: 0 0 2rem 0;
@@ -157,14 +154,16 @@
 }
 
 .customerName {
-    color: #4E2520;
+    font-family: 'Montserrat', 'MontserratRegular', sans-serif;
+    color: #FFFFFF;
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0 0 0.25rem 0;
 }
 
 .customerPosition {
-    color: #F3793C;
+    font-family: 'Montserrat', 'MontserratRegular', sans-serif;
+    color: #FFFFFF;
     font-size: 0.9rem;
     font-weight: 400;
     margin: 0;
@@ -385,6 +384,7 @@
     .quoteText {
         font-size: 0.8rem;
         margin-bottom: 1.25rem;
+        color: #F3793C;
     }
 
     .customerAvatar {
