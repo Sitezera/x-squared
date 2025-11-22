@@ -336,6 +336,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false, heroImage = "/assets/her
           .hero {
             padding: 0;
             min-height: auto;
+            margin-top: 4rem;
           }
 
           .hero-container {
