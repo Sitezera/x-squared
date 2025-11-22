@@ -1,0 +1,194 @@
+
+
+ .accentLines {
+  width: 100vw !important;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 100;
+}
+
+.accentLine {
+  height: 4px;
+  border: none;
+  box-shadow: 0 0 2px 2px #fff;
+  width: 100vw !important;
+  margin: 0 !important;
+}
+
+.accentLine-top {
+  background: rgba(240, 138, 75, 0.35);
+  border-top: 1px solid #fff;
+}
+
+.accentLine-middle {
+  background: #fff;
+  border-top: 1px solid #f08a4b;
+}
+
+.accentLine-bottom {
+  background: #f08a4b;
+  border-top: 1px solid #fff;
+}
+/* About Section Styles - CSS Module */
+.about {
+  background: #E86C2A;
+  padding: 4% 0 6% 0;
+  position: relative;
+  overflow: visible;
+  border-radius: 20px;
+  margin: 0 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.aboutContent {
+  width: 100%;
+  padding: 0 2rem;
+}
+.aboutsHeader {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1.2rem;
+}
+.aboutsLabel {
+  font-family: 'MontserratRegular';
+  color: #FFFFF3;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 0;
+  white-space: nowrap;
+}
+.headerLine {
+  flex: 0 0 200px;
+  height: 1px;
+  background: #FFFFF3;
+  transform-origin: left;
+}
+.sectionTitle {
+  font-family: 'MontserratRegular';
+  font-size: 0px;
+  color: #FFFFF3;
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-align: left;
+}
+.aboutText {
+  color: white;
+  max-width: 100%;
+}
+.textBlock {
+  display: block;
+  margin-bottom: 0.3rem;
+  line-height: 2.2;
+  text-align: left;
+}
+.textItalic {
+  font-family: 'TheSeasonsRegular', Georgia, serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 3.2rem;
+  text-align: left;
+  margin: 0;
+  color: #FFFFF3;
+}
+.continuousParagraph {
+  display: block;
+  margin: 0;
+}
+.textSegment {
+  display: inline;
+  font-family: 'TheSeasonsRegular', Georgia, serif;
+  font-style: italic;
+  font-weight: normal;
+  color: #FFFFF3;
+  font-size: 2.7rem;
+  line-height: 3.4rem;
+}
+@media (max-width: 1200px) {
+  .about {
+    padding: 3rem 0 5% 0;
+  }
+  .container {
+    padding: 0 1.5rem;
+  }
+  .aboutContent {
+    padding: 0 1.2rem;
+  }
+  .headerLine {
+    flex: 0 0 120px;
+  }
+  .textSegment {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  .textItalic {
+    font-size: 1.5rem;
+    line-height: 2.3rem;
+  }
+}
+@media (max-width: 768px) {
+  .about {
+    padding: 2rem 0 4% 0;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+  .aboutContent {
+    padding: 0 1rem;
+  }
+  .aboutHeader {
+    margin-bottom: 0.4rem;
+  }
+  .aboutsHeader {
+    margin-bottom: 0.1rem;
+  }
+  .headerLine {
+    flex: 0 0 80px;
+  }
+  .textItalic {
+    font-size: 1.1rem;
+    line-height: 2.1rem;
+  }
+  .textSegment {
+    font-size: 1.3rem;
+    line-height: 2.1rem;
+  }
+}
+@media (max-width: 480px) {
+  .about {
+    padding: 4rem 0 4rem 0;
+  }
+  .container {
+    padding: 0 0.7rem;
+  }
+  .aboutContent {
+    padding: 0 0.7rem;
+  }
+  .aboutHeader {
+    margin-bottom: 0.2rem;
+  }
+  .aboutsHeader {
+    margin-bottom: 0.05rem;
+  }
+  .headerLine {
+    flex: 0 0 50px;
+  }
+  .textItalic {
+    font-size: 0.95rem;
+    line-height: 1.7rem;
+  }
+  .textSegment {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+}

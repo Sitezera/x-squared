@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { TextReveal, ScaleInOnScroll } from '../animations/ScrollAnimations'
 import { useSmoothScroll } from '../../hooks/useScrollAnimations'
 
-const Hero = ({ isLoading = false, isFirstLoad = false }) => {
+const Hero = ({ isLoading = false, isFirstLoad = false, heroImage = "/assets/hero image.png", heroImageMobile = "/assets/heroMobile.svg" }) => {
   // Enable smooth scrolling like 49North
   useSmoothScroll();
 
@@ -182,9 +182,9 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
         >
           <ScaleInOnScroll delay={0} initialScale={1} threshold={1}>
             <picture>
-              <source media="(max-width: 768px)" srcSet="/assets/heroMobile.svg" />
+              <source media="(max-width: 768px)" srcSet={heroImageMobile} />
               <img
-                src="/assets/hero image.png"
+                src={heroImage}
                 alt="Minimalist interior with natural light"
                 className="hero-img"
               />
@@ -213,7 +213,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           position: relative;
           width: 100%;
           min-height: 100vh;
-          background: #fffef4;
+          background: #fff;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -234,8 +234,8 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
 
         .hero-image-container {
           position: relative;
-          width: 45%;
-          max-width: 45%;
+          width: 55%;
+          max-width: 55%;
           height: auto;
           z-index: 1;
           border-radius: 0;
@@ -335,14 +335,16 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
         @media (max-width: 768px) {
           .hero {
             padding: 0;
+            min-height: auto;
           }
 
           .hero-container {
-            height: 100vh;
-            min-height: 500px;
+            height: auto;
+            min-height: auto;
             flex-direction: column;
             justify-content: center;
             gap: 0;
+            padding: 3rem 1rem;
           }
 
           .hero-image-container {
@@ -362,7 +364,7 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
             top: auto;
             text-align: left;
             width: 100%;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
           }
 
           .hero-text-right {
@@ -371,11 +373,11 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
             bottom: auto;
             text-align: right;
             width: 100%;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
           }
 
           .hero-title {
-            font-size: clamp(2.8rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             white-space: normal;
           }
         }
@@ -383,12 +385,13 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
         @media (max-width: 480px) {
           .hero {
             padding: 0;
+            min-height: auto;
           }
 
           .hero-container {
-            height: 100vh;
-            min-height: 450px;
-            padding: 1rem;
+            height: auto;
+            min-height: auto;
+            padding: 2rem 1rem;
           }
 
           .hero-image-container {
@@ -396,17 +399,17 @@ const Hero = ({ isLoading = false, isFirstLoad = false }) => {
           }
 
           .hero-text-left {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             left : 2% 
           }
 
           .hero-text-right {
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             right : 2%;
           }
 
           .hero-title {
-            font-size: clamp(2.8rem, 7vw, 3rem);
+            font-size: clamp(2rem, 7vw, 3rem);
           }
 
           .scroll-indicator {

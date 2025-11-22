@@ -11,17 +11,17 @@ const Services = () => {
     {
       icon: "/assets/service icon1.png",
       title: "PROJECT MANAGEMENT & CONSULTATION",
-      text: "Squared offers dynamic project management and consultation services to streamline every stage of your real estate journey. From planning to delivery, we tackle complexities with strategic foresight and meticulous execution."
+      text: "We provide structured project management and consultation services to streamline every stage of development. From planning to delivery, our approach combines foresight with disciplined execution to handle complexities effectively."
     },
     {
       icon: "/assets/service icon2.png",
       title: "PROJECT ENABLER",
-      text: "We take your vision and turn it into a reality. From conceptualization to execution, Squared acts as the backbone of your project, providing seamless support across legal, financial, and operational requirements."
+      text: "We support projects from concept to completion, ensuring operational, financial, and legal requirements are met seamlessly. Acting as the backbone of execution, we help visions move forward with clarity and confidence."
     },
     {
       icon: "/assets/service icone 3.png",
       title: "END-TO-END PORTFOLIO MANAGEMENT",
-      text: "Squared provides comprehensive portfolio management solutions, taking the burden off your shoulders. From acquisition to asset enhancement and final divestment, we handle it all. We ensure your portfolio grows with precision, purpose, and maximum returns."
+      text: "Our portfolio management services cover the entire asset lifecycle—from acquisition and enhancement to divestment. With a focus on precision and long-term performance, we enable portfolios to achieve sustainable growth and maximum returns."
     }
   ]
 
@@ -77,9 +77,10 @@ const Services = () => {
                 threshold={0.2}
               >
                 <motion.img 
-                  src="/assets/sevices.png" 
+                  src="/assets/WhatsApp Image 2025-11-14 at 17.52.14.jpeg" 
                   alt="Our Services" 
                   className={styles.serviceHeroImg}
+                  style={{ aspectRatio: '4/3', width: '100%', height: 'auto', objectFit: 'cover' }}
                   whileHover={{ 
                     scale: 1.05, 
                     rotateY: 5,

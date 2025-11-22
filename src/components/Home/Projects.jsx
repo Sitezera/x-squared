@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FadeInOnScroll, SlideInFromLeft } from '../animations/ScrollAnimations'
 import styles from './Projects.module.css'
@@ -6,32 +6,30 @@ import slidingBtn from '/assets/slidingWhiteBtn.svg'
 
 const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0)
-  const touchStartX = useRef(0)
-  const touchEndX = useRef(0)
 
   const projects = [
     {
       title: 'Amidst the Hill',
-      description: 'A compact plotted development near Vemgal Industrial Area. Provides well-sized plots with essential infrastructure, ideal for building homes or making smart investments.',
-      image: '/assets/ATHimage.webp',
+      description: 'Spanning 70 acres across Nandi Hills, this development includes a 32-acre ultra-luxury villa community with panoramic hill views and a 38-acre scenic project offering villaments and villas. Designed for affluent buyers and smart living, it combines nature, space, and seamless expansion.',
+      image: '/assets/ATHimage.png',
       details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     },
     {
-      title: 'Manchanvelle',
-      description: 'We are a real estate firm with over 30 years of expertise, and our main goal is to provide amazing locations to our partners and clients.',
-      image: '/assets/Manchanvelle.webp',
+      title: 'Nava Manchanvelle',
+      description: 'A 30-acre plotted residential community near NH44 in Chikkaballapur, designed for professionals and families. Strategically located for accessibility, it offers lifestyle convenience with well-planned infrastructure.',
+      image: '/assets/Manchanvelle.png',
       details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     },
     {
       title: 'Kavaranahalli',
-      description: 'A premium residential project spread across 4.5 and 27 acres in the scenic Nandi Hills region. Offers plotted developments and future-ready villas, crafted in phases for sustainable growth.',
-      image: '/assets/Karvanahalli.webp',
+      description: 'A 31.5-acre premium residential project in the scenic Nandi Hills region, spread across 4.5 and 27 acres. Offers plotted developments and future-ready villas, crafted in phases for sustainable growth.',
+      image: '/assets/Karvanahalli.png',
       details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     },
     {
-      title: 'Kandwara',
-      description: 'A plotted residential community designed for professionals and families. Strategically located near NH44 in Chikkaballapur, it combines accessibility with lifestyle convenience.',
-      image: '/assets/Kandwara.webp',
+      title: 'Nava Kandhwara',
+      description: 'A 38-acre scenic development near Nandi Hills offering villaments and villas. Designed for seamless expansion, it combines nature, space, and smart living to meet rising demand.',
+      image: '/assets/Kandwara.png',
       details: 'Each project reflects our commitment to excellence, transforming visions into thriving realities. Explore what sets us apart—because every project tells a story of success.'
     }
   ]
@@ -46,30 +44,6 @@ const Projects = () => {
 
   const goToProject = (index) => {
     setCurrentProject(index)
-  }
-
-  // Handle touch events for swipe
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX
-  }
-
-  const handleTouchMove = (e) => {
-    touchEndX.current = e.touches[0].clientX
-  }
-
-  const handleTouchEnd = () => {
-    const swipeThreshold = 50 // Minimum distance for a swipe
-    const diff = touchStartX.current - touchEndX.current
-
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        // Swiped left - go to next project
-        nextProject()
-      } else {
-        // Swiped right - go to previous project
-        prevProject()
-      }
-    }
   }
 
   return (
@@ -105,9 +79,6 @@ const Projects = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
               >
                 <h1 className={styles.projectTitle}>
                   {projects[currentProject].title}
@@ -127,9 +98,6 @@ const Projects = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.7 }}
               whileHover={{ scale: 1.02 }}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
             >
               {projects[currentProject].image.toLowerCase().endsWith('.mp4') || projects[currentProject].image.toLowerCase().endsWith('.webm') ? (
                 <video
@@ -168,9 +136,6 @@ const Projects = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
             >
               <h1 className={styles.projectTitle}>
                 {projects[currentProject].title}
@@ -182,25 +147,21 @@ const Projects = () => {
             </motion.div>
           </AnimatePresence>
 
-          <motion.button
+          <button
             className={`${styles.navArrow} ${styles.navPrev}`}
             onClick={prevProject}
             aria-label="Previous project"
-            whileHover={{ scale: 1.15, x: -5 }}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            <img className={styles.slidingButton} src={slidingBtn} alt="sliding button" draggable="false" style={{ pointerEvents: 'none' }} />
-          </motion.button>
+            <img className={`${styles.slidingButton} ${styles.slidingBtnRight}`} src={slidingBtn} alt="sliding button" draggable="false" style={{ pointerEvents: 'none' }} />
+          </button>
 
-          <motion.button
+          <button
             className={`${styles.navArrow} ${styles.navNext}`}
             onClick={nextProject}
             aria-label="Next project"
-            whileHover={{ scale: 1.15, x: 5 }}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            <img className={`${styles.slidingButton} ${styles.slidingBtnRight}`} src={slidingBtn} alt="sliding button" draggable="false" style={{ pointerEvents: 'none' }} />
-          </motion.button>
+            <img className={styles.slidingButton} src={slidingBtn} alt="sliding button" draggable="false" style={{ pointerEvents: 'none' }} />
+          </button>
 
           <FadeInOnScroll delay={0.7} yOffset={20} className={styles.projectDots}>
             {projects.map((_, index) => (
@@ -210,6 +171,7 @@ const Projects = () => {
                 onClick={() => goToProject(index)}
                 aria-label={`Go to project ${index + 1}`}
                 whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400 }}
               />
             ))}

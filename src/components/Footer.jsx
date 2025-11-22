@@ -193,20 +193,20 @@ const Footer = () => {
             </p>
             
             <div className="social-links">
-              <a href="#" aria-label="Facebook" className="social-icon">
+              <a href="https://www.facebook.com/xsquaredrealty" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
              
-              <a href="#" aria-label="Instagram" className="social-icon">
+              <a href="https://www.instagram.com/xsquaredrealty/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
-              <a href="#" aria-label="LinkedIn" className="social-icon">
+              <a href="https://www.linkedin.com/company/xsquared-realty/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <rect x="2" y="9" width="4" height="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -608,7 +608,7 @@ const Footer = () => {
           }
 
           .footer-container {
-            padding: 0 1.5rem;
+            padding: 0 1.875rem;
           }
 
           .section-title {
@@ -616,12 +616,7 @@ const Footer = () => {
           }
 
           .footer-content {
-            gap: 1rem;
-            margin-bottom: 1rem;
-          }
-          .footer-bottom{
-          padding-top:0;
-          gap: 1rem;
+            gap: 3rem;
           }
 
           .footer-links {
@@ -629,11 +624,11 @@ const Footer = () => {
           }
 
           .column-title {
-            font-size: 0.8rem;
+            font-size: 1rem;
           }
 
           .link-list a {
-            font-size: 1.4rem;
+            font-size: 1rem;
           }
 
           .social-links {

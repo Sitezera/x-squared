@@ -15,6 +15,9 @@ import Team from './pages/Team'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import FAQ from './pages/FAQ'
+import AmidstTheHill from './pages/amidst-the-hill'
+import NavaManchanabelle from './pages/nava-manchanabelle'
+import NavaHarihara from './pages/nava-harihara'
 
 // Animated Routes Component
 const AnimatedRoutes = () => {
@@ -58,10 +61,31 @@ const AnimatedRoutes = () => {
             <FAQ />
           </PageTransition>
         } />
+        <Route path="/amidst-the-hill" element={
+          <PageTransition>
+            <AmidstTheHill />
+          </PageTransition>
+        } />
+          <Route path="/nava-kandwara" element={
+            <PageTransition>
+              <NavaKandwara />
+            </PageTransition>
+          } />
+          <Route path="/nava-manchanabelle" element={
+            <PageTransition>
+              <NavaManchanabelle />
+            </PageTransition>
+          } />
+          <Route path="/nava-harihara" element={
+            <PageTransition>
+              <NavaHarihara />
+            </PageTransition>
+          } />
       </Routes>
     </AnimatePresence>
   );
 };
+import NavaKandwara from './pages/nava-kandwara'
 
 const App = () => {
   return (

@@ -1,3 +1,8 @@
+/* Enforce TheSeasonsLight font for About page quotes */
+.content-quote {
+  font-family: 'MontserratRegular', 'Montserrat', sans-serif !important;
+  font-style: italic;
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -201,6 +206,15 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Hero title font enforcement */
+.hero-title,
+.hero-title *,
+.hero-title span {
+  font-family: 'TheSeasonsLight', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
 }
 
 .contact-title {
